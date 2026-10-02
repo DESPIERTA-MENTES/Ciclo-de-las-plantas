@@ -1,35 +1,50 @@
 // Service Worker para 'El Maravilloso Ciclo de la Planta'
-const CACHE_NAME = 'ciclo-planta-v1';
-const ASSETS_TO_CACHE = [
+const CACHE_NAME = 'ciclo-planta-v2';
+
+// Archivos nucleares garantizados
+const CORE_ASSETS = [
   './',
   './index.html',
-  './manifest.json',
+  './manifest.json'
+];
+
+// Archivos de imagen y fuentes (se guardan individualmente sin romper la instalación si alguno no existe)
+const OPTIONAL_ASSETS = [
   './icono.png',
-  './icono',
   './logofirma.png',
-  './logofirma',
+  './logofirma.jpg',
   'https://cdn.tailwindcss.com',
   'https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700;800&display=swap'
 ];
 
-// Instalación: guardar activos en caché
+// Instalación: Carga tolerante a fallos
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS_TO_CACHE).catch((err) => {
-        console.warn('[SW] Cache inicial:', err);
-      });
+    caches.open(CACHE_NAME).then(async (cache) => {
+      // 1. Guardar archivos base indispensables
+      await cache.addAll(CORE_ASSETS);
+      
+      // 2. Intentar guardar recursos opcionales uno por uno sin abortar en caso de 404
+      await Promise.allSettled(
+        OPTIONAL_ASSETS.map((url) =>
+          fetch(url)
+            .then((res) => {
+              if (res.ok) return cache.put(url, res);
+            })
+            .catch(() => {})
+        )
+      );
     })
   );
   self.skipWaiting();
 });
 
-// Activación: limpiar cachés antiguas
+// Activación: limpieza de versiones viejas
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((keyList) => {
+    caches.keys().then((keys) => {
       return Promise.all(
-        keyList.map((key) => {
+        keys.map((key) => {
           if (key !== CACHE_NAME) {
             return caches.delete(key);
           }
@@ -40,7 +55,7 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// Estrategia Network First con fallback a Cache para soporte offline
+// Manejo de peticiones: Red primero con respaldo a caché offline
 self.addEventListener('fetch', (event) => {
   if (!event.request.url.startsWith('http')) return;
 
