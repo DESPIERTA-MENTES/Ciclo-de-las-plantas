@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>El Maravilloso Ciclo de la Planta 🌱</title>
+  <title>El Ciclo de la Planta y la Mariposa 🌱🦋</title>
   
   <!-- Configuración PWA e instalación en dispositivos -->
   <link rel="manifest" href="manifest.json">
@@ -11,9 +11,8 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Ciclo Planta">
+  <meta name="apple-mobile-web-app-title" content="Ciclo Planta y Mariposa">
   <link rel="apple-touch-icon" href="icono.png">
-  <link rel="apple-touch-icon" href="icono.jpg">
   <link rel="icon" type="image/png" href="icono.png">
   <link rel="icon" type="image/jpeg" href="icono.jpg">
 
@@ -33,7 +32,6 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* Animaciones suaves e infantiles */
     @keyframes bounce-gentle {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-8px); }
@@ -94,6 +92,35 @@
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
+    @keyframes caterpillar-inch {
+      0%, 100% { transform: scaleX(1) translateY(0); }
+      30% { transform: scaleX(0.88) scaleY(1.15) translateY(-6px); }
+      60% { transform: scaleX(1.1) scaleY(0.9) translateY(2px); }
+    }
+    @keyframes cocoon-swing {
+      0%, 100% { transform: rotate(-7deg); }
+      50% { transform: rotate(7deg); }
+    }
+    @keyframes wing-flutter-left {
+      0%, 100% { transform: scaleX(1) rotate(0deg); }
+      50% { transform: scaleX(0.2) rotate(-8deg); }
+    }
+    @keyframes wing-flutter-right {
+      0%, 100% { transform: scaleX(1) rotate(0deg); }
+      50% { transform: scaleX(0.2) rotate(8deg); }
+    }
+    @keyframes fairy-float {
+      0%, 100% { transform: translateY(0) rotate(-2deg); }
+      50% { transform: translateY(-8px) rotate(2deg); }
+    }
+    @keyframes sparkle-twinkle {
+      0%, 100% { transform: scale(0.7) rotate(0deg); opacity: 0.4; }
+      50% { transform: scale(1.3) rotate(20deg); opacity: 1; }
+    }
+    @keyframes leaf-munch {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(9deg); }
+    }
 
     .anim-bounce-gentle { animation: bounce-gentle 2.2s infinite ease-in-out; }
     .anim-wiggle { animation: wiggle-flower 2s infinite ease-in-out; }
@@ -103,6 +130,13 @@
     .anim-pop { animation: pop-in 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
     .anim-pulse-ring { animation: pulse-ring 2s infinite; }
     .anim-cycle-spin { animation: cycle-spin 22s linear infinite; }
+    .anim-caterpillar { animation: caterpillar-inch 1.3s infinite ease-in-out; transform-origin: 120px 200px; }
+    .anim-cocoon { animation: cocoon-swing 2.6s infinite ease-in-out; transform-origin: 120px 115px; }
+    .anim-wing-left { animation: wing-flutter-left 0.7s infinite ease-in-out; transform-origin: 120px center; }
+    .anim-wing-right { animation: wing-flutter-right 0.7s infinite ease-in-out; transform-origin: 120px center; }
+    .anim-fairy { animation: fairy-float 2.2s infinite ease-in-out; }
+    .anim-sparkle { animation: sparkle-twinkle 1.6s infinite ease-in-out; }
+    .anim-munch { animation: leaf-munch 0.8s infinite ease-in-out; transform-origin: 175px 170px; }
 
     .cloud-1 { animation: float-cloud 45s linear infinite; }
     .cloud-2 { animation: float-cloud 60s linear infinite 20s; }
@@ -112,15 +146,6 @@
       transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     .bubble-card:hover { transform: translateY(-4px) scale(1.02); }
-    
-    .bubble-btn {
-      box-shadow: 0 8px 0 rgba(0, 0, 0, 0.14);
-      transition: all 0.15s ease-in-out;
-    }
-    .bubble-btn:active {
-      transform: translateY(6px);
-      box-shadow: 0 2px 0 rgba(0, 0, 0, 0.14);
-    }
 
     .dragging {
       opacity: 0.55;
@@ -132,12 +157,10 @@
       transform: scale(1.03);
     }
 
-    /* Espejo para selfie natural */
     .mirror-video {
       transform: scaleX(-1);
     }
 
-    /* Ajuste para pantallas pequeñas y touch scrolling suave */
     .custom-scrollbar::-webkit-scrollbar {
       width: 6px;
       height: 6px;
@@ -147,13 +170,12 @@
       border-radius: 9999px;
     }
 
-    /* Ajuste de escala para pantallas ultra compactas o modo horizontal */
     @media (max-height: 700px) {
       .screen-compact-pot {
-        min-height: 290px !important;
+        min-height: 280px !important;
       }
       .screen-compact-svg {
-        max-height: 250px !important;
+        max-height: 240px !important;
       }
     }
   </style>
@@ -173,7 +195,7 @@
         <path d="M20,40 Q10,40 10,30 Q10,20 25,20 Q30,8 45,12 Q60,5 70,18 Q85,15 88,30 Q95,35 90,42 Q80,45 20,40 Z"/>
       </svg>
     </div>
-    <!-- Sol amigable en esquina responsiva -->
+    <!-- Sol interactivo amigable -->
     <div class="absolute top-2 right-2 sm:top-3 sm:right-4 anim-sun cursor-pointer pointer-events-auto z-20" id="btn-sun-fun" title="¡Tócame!">
       <svg class="w-14 h-14 sm:w-20 sm:h-20 md:w-28 md:h-28 text-amber-400 drop-shadow-md sm:drop-shadow-lg" viewBox="0 0 100 100" fill="currentColor">
         <circle cx="50" cy="50" r="24" fill="#FBBF24"/>
@@ -192,62 +214,81 @@
     </div>
   </div>
 
-  <header class="relative z-10 w-full max-w-5xl mx-auto px-2 sm:px-4 pt-1 sm:pt-3 pb-2 text-center">
-    <div class="inline-flex max-w-full items-center justify-center gap-2 bg-white/95 backdrop-blur-md px-3 sm:px-5 py-1.5 sm:py-2 rounded-full border-3 sm:border-4 border-emerald-400 shadow-md">
-      <span class="text-2xl sm:text-3xl shrink-0">🌱</span>
-      <h1 class="text-lg xs:text-xl sm:text-2xl md:text-4xl font-extrabold text-emerald-800 tracking-wide truncate">
-        ¡Hagamos Crecer la Plantita!
+  <!-- CABECERA PRINCIPAL REORGANIZADA Y LIMPIA -->
+  <header class="relative z-10 w-full max-w-4xl mx-auto px-2 sm:px-4 pt-1 sm:pt-2 pb-1 text-center">
+    
+    <!-- BARRA SUPERIOR: Selector de Categoría + Acciones Rápidas (Mi Foto / Sonido) -->
+    <div class="flex flex-wrap items-center justify-between gap-2 bg-white/90 backdrop-blur-md px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-2xl sm:rounded-3xl border-2 border-emerald-300 shadow-sm mb-2">
+      
+      <!-- Pestañas de Categoría: Planta vs Mariposa -->
+      <div class="inline-flex p-0.5 bg-slate-100 rounded-xl sm:rounded-2xl border border-slate-200 shadow-inner">
+        <button id="cat-plant-btn" class="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-lg sm:rounded-xl font-black text-xs xs:text-sm sm:text-base transition bg-gradient-to-r from-emerald-500 to-green-500 text-white shadow-sm">
+          <span>🌱</span>
+          <span>Planta</span>
+        </button>
+        <button id="cat-butterfly-btn" class="flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-lg sm:rounded-xl font-black text-xs xs:text-sm sm:text-base transition text-purple-900 hover:bg-purple-100/60">
+          <span>🦋</span>
+          <span>Mariposa</span>
+        </button>
+      </div>
+
+      <!-- Título de la categoría actual (integrado con sutileza) -->
+      <h1 id="main-app-title" class="hidden md:inline-block text-base lg:text-xl font-black text-emerald-900 truncate tracking-tight">
+        ¡Hagamos Crecer la Plantita! 🌱
       </h1>
-      <!-- Mini avatar de foto del niño si ya la tomó -->
-      <div id="header-avatar-badge" class="hidden items-center gap-1 sm:gap-1.5 bg-emerald-100 border-2 border-emerald-400 px-1.5 sm:px-2 py-0.5 rounded-full cursor-pointer shrink-0" title="Cambiar mi foto">
-        <img id="header-avatar-img" class="w-6 h-6 sm:w-8 sm:h-8 rounded-full object-cover border border-white" alt="Avatar">
-        <span class="text-[10px] sm:text-xs font-bold text-emerald-800">Tú 🌸</span>
+
+      <!-- Acciones de soporte: Foto y Sonido -->
+      <div class="flex items-center gap-1.5 sm:gap-2">
+        <button id="btn-retake-photo" class="bg-purple-100 hover:bg-purple-200 text-purple-900 font-extrabold px-2.5 sm:px-3 py-1 rounded-xl text-xs sm:text-sm transition transform active:scale-95 border border-purple-300 flex items-center gap-1 shadow-xs">
+          <span>📸</span>
+          <span class="hidden xs:inline">Mi Foto</span>
+        </button>
+
+        <!-- Mini avatar selfie si ya se tomó la foto -->
+        <div id="header-avatar-badge" class="hidden items-center gap-1 bg-emerald-100 border border-emerald-400 px-1.5 py-0.5 rounded-full cursor-pointer shrink-0" title="Cambiar mi foto">
+          <img id="header-avatar-img" class="w-5 h-5 sm:w-6 sm:h-6 rounded-full object-cover border border-white" alt="Avatar">
+          <span class="text-[9px] sm:text-[10px] font-black text-emerald-800">Tú ✨</span>
+        </div>
+
+        <button id="btn-sound-toggle" class="bg-sky-100 hover:bg-sky-200 text-sky-900 font-extrabold px-2 sm:px-2.5 py-1 rounded-xl text-xs sm:text-sm transition transform active:scale-95 border border-sky-300 shadow-xs">
+          <span id="sound-icon">🔔</span>
+        </button>
       </div>
     </div>
 
-    <!-- Barra de audio / instrucciones amigables para niños -->
-    <div class="mt-2.5 sm:mt-3 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-      <button id="btn-speak-instruction" class="bg-amber-400 hover:bg-amber-300 text-amber-950 font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-md flex items-center gap-1.5 sm:gap-2 text-sm sm:text-base md:text-lg transition transform active:scale-95 border-2 border-amber-500">
-        <span class="text-lg sm:text-xl">🔊</span>
-        <span>Escuchar ayuda</span>
+    <!-- SELECTOR DE MODOS (Pestañas 1. Cuidar / 2. Ordenar) -->
+    <div class="flex justify-center gap-2 sm:gap-3 mb-2 w-full max-w-lg mx-auto">
+      <button id="tab-grow" class="flex-1 bg-emerald-500 text-white font-black text-xs sm:text-base px-3 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl shadow-sm border-b-2 sm:border-b-4 border-emerald-700 flex items-center justify-center gap-1.5 transition active:scale-95">
+        <span id="tab-grow-icon" class="text-sm sm:text-lg">🌻</span>
+        <span id="tab-grow-text" class="truncate">1. Cuidar Planta</span>
       </button>
-      <button id="btn-retake-photo" class="bg-purple-400 hover:bg-purple-300 text-purple-950 font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-md text-sm sm:text-base transition transform active:scale-95 border-2 border-purple-500 flex items-center gap-1">
-        <span>📸</span>
-        <span>Mi Foto</span>
-      </button>
-      <button id="btn-sound-toggle" class="bg-sky-400 hover:bg-sky-300 text-sky-950 font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-md text-sm sm:text-base transition transform active:scale-95 border-2 border-sky-500">
-        <span id="sound-icon">🔔 Sonido Sí</span>
+      <button id="tab-sequence" class="flex-1 bg-white/80 hover:bg-white text-emerald-900 font-black text-xs sm:text-base px-3 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl shadow-xs border-b-2 sm:border-b-4 border-slate-300 flex items-center justify-center gap-1.5 transition active:scale-95">
+        <span class="text-sm sm:text-lg">🧩</span>
+        <span id="tab-sequence-text" class="truncate">2. Ordenar Ciclo</span>
       </button>
     </div>
 
-    <!-- Indicador de instrucción gigante y fácil de leer -->
-    <div id="instruction-banner" class="mt-2 sm:mt-3 bg-white/95 max-w-2xl mx-auto py-1.5 sm:py-2.5 px-3 sm:px-6 rounded-2xl border-2 border-emerald-300 shadow-sm">
-      <p id="instruction-text" class="text-xs xs:text-sm sm:text-lg md:text-xl font-bold text-emerald-900 leading-snug">
+    <!-- BANNER DE INSTRUCCIÓN INTEGRADO TIPO BOCADILLO DE DIÁLOGO CON AUDIO -->
+    <div id="instruction-banner" class="group bg-white/95 hover:bg-white cursor-pointer max-w-2xl mx-auto py-1 sm:py-1.5 px-3 sm:px-4 rounded-xl sm:rounded-2xl border-2 border-emerald-300 shadow-sm flex items-center justify-center gap-2 transition-all hover:border-emerald-400 active:scale-[0.99]" title="Toca para escuchar la instrucción">
+      <button id="btn-speak-instruction" class="bg-amber-400 hover:bg-amber-300 group-hover:scale-105 text-amber-950 font-black px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg text-xs sm:text-sm flex items-center gap-1 shrink-0 border border-amber-500 shadow-xs transition-transform">
+        <span>🔊</span>
+        <span class="text-[10px] sm:text-xs">Escuchar</span>
+      </button>
+      <p id="instruction-text" class="text-xs sm:text-sm md:text-base font-extrabold text-emerald-900 leading-tight truncate">
         ¡Arrastra la <span class="text-amber-700 underline decoration-amber-400">Semillita</span> adentro de la maceta para comenzar!
       </p>
     </div>
+
   </header>
 
   <main class="relative z-10 w-full max-w-5xl mx-auto px-1 sm:px-4 py-1 sm:py-2 flex-1 flex flex-col items-center justify-center">
 
-    <!-- SELECTOR DE MODOS (Pestañas grandes y visuales) -->
-    <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-2.5 sm:mb-4 w-full max-w-xl">
-      <button id="tab-grow" class="flex-1 min-w-[135px] bg-emerald-500 text-white font-bold text-xs xs:text-sm sm:text-lg md:text-xl px-2.5 sm:px-5 py-2 sm:py-2.5 rounded-2xl shadow-lg border-b-4 border-emerald-700 flex items-center justify-center gap-1.5 sm:gap-2 transition active:scale-95">
-        <span class="text-base sm:text-xl">🌻</span>
-        <span class="truncate">1. Cuidar Planta</span>
-      </button>
-      <button id="tab-sequence" class="flex-1 min-w-[135px] bg-white/80 hover:bg-white text-emerald-800 font-bold text-xs xs:text-sm sm:text-lg md:text-xl px-2.5 sm:px-5 py-2 sm:py-2.5 rounded-2xl shadow-md border-b-4 border-slate-300 flex items-center justify-center gap-1.5 sm:gap-2 transition active:scale-95">
-        <span class="text-base sm:text-xl">🧩</span>
-        <span class="truncate">2. Ordenar Ciclo</span>
-      </button>
-    </div>
-
-    <!-- MODO 1: ¡HACER CRECER LA PLANTA PASO A PASO! -->
+    <!-- MODO 1: CUIDAR Y TRANSFORMAR PASO A PASO -->
     <div id="mode-grow-container" class="w-full grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-6 items-center">
       
-      <!-- Zona izquierda: Herramientas interactivas para arrastrar o tocar -->
+      <!-- Zona izquierda: Fichas de cuidado -->
       <div class="lg:col-span-4 flex flex-col items-center bg-white/90 backdrop-blur-md p-2.5 sm:p-5 rounded-2xl sm:rounded-3xl border-2 sm:border-4 border-dashed border-emerald-400 shadow-xl w-full">
-        <h2 class="text-emerald-900 font-extrabold text-sm sm:text-xl mb-0.5 sm:mb-1 flex items-center gap-1.5 text-center">
+        <h2 id="tools-title" class="text-emerald-900 font-extrabold text-sm sm:text-xl mb-0.5 sm:mb-1 flex items-center gap-1.5 text-center">
           <span>✨</span>
           <span>¿Qué necesita la planta?</span>
         </h2>
@@ -255,53 +296,9 @@
           👉 Toca o arrastra la ficha brillante
         </p>
 
-        <!-- Contenedor de fichas de cuidado adaptable (2 cols en móviles, 1 col en pantallas grandes) -->
+        <!-- Contenedor dinámico de fichas -->
         <div class="grid grid-cols-2 lg:grid-cols-1 gap-1.5 sm:gap-3 w-full" id="tools-shelf">
-          
-          <!-- Elemento 1: Semilla -->
-          <div id="tool-seed" draggable="true" data-type="seed" class="tool-card bubble-card cursor-grab active:cursor-grabbing bg-gradient-to-r from-amber-100 to-amber-200 border-2 sm:border-4 border-amber-400 rounded-xl sm:rounded-2xl p-1.5 sm:p-3 flex items-center gap-1.5 sm:gap-3">
-            <div class="w-9 h-9 sm:w-14 sm:h-14 bg-white rounded-lg sm:rounded-xl shadow-inner flex items-center justify-center text-lg sm:text-3xl shrink-0">
-              🌰
-            </div>
-            <div class="text-left overflow-hidden">
-              <span class="block text-[9px] sm:text-xs font-semibold uppercase text-amber-800">Paso 1</span>
-              <span class="block text-xs sm:text-lg font-bold text-amber-950 truncate">Semillita</span>
-            </div>
-          </div>
-
-          <!-- Elemento 2: Agua -->
-          <div id="tool-water" draggable="true" data-type="water" class="tool-card bubble-card cursor-grab active:cursor-grabbing bg-gradient-to-r from-sky-100 to-blue-200 border-2 sm:border-4 border-blue-400 rounded-xl sm:rounded-2xl p-1.5 sm:p-3 flex items-center gap-1.5 sm:gap-3 opacity-40 pointer-events-none">
-            <div class="w-9 h-9 sm:w-14 sm:h-14 bg-white rounded-lg sm:rounded-xl shadow-inner flex items-center justify-center text-lg sm:text-3xl shrink-0">
-              💧
-            </div>
-            <div class="text-left overflow-hidden">
-              <span class="block text-[9px] sm:text-xs font-semibold uppercase text-blue-800">Paso 2</span>
-              <span class="block text-xs sm:text-lg font-bold text-blue-950 truncate">Agüita</span>
-            </div>
-          </div>
-
-          <!-- Elemento 3: Sol -->
-          <div id="tool-sun" draggable="true" data-type="sun" class="tool-card bubble-card cursor-grab active:cursor-grabbing bg-gradient-to-r from-yellow-100 to-amber-200 border-2 sm:border-4 border-amber-400 rounded-xl sm:rounded-2xl p-1.5 sm:p-3 flex items-center gap-1.5 sm:gap-3 opacity-40 pointer-events-none">
-            <div class="w-9 h-9 sm:w-14 sm:h-14 bg-white rounded-lg sm:rounded-xl shadow-inner flex items-center justify-center text-lg sm:text-3xl shrink-0">
-              ☀️
-            </div>
-            <div class="text-left overflow-hidden">
-              <span class="block text-[9px] sm:text-xs font-semibold uppercase text-amber-800">Paso 3</span>
-              <span class="block text-xs sm:text-lg font-bold text-amber-950 truncate">Sol y calor</span>
-            </div>
-          </div>
-
-          <!-- Elemento 4: Amor / Nutrientes -->
-          <div id="tool-love" draggable="true" data-type="love" class="tool-card bubble-card cursor-grab active:cursor-grabbing bg-gradient-to-r from-pink-100 to-rose-200 border-2 sm:border-4 border-rose-400 rounded-xl sm:rounded-2xl p-1.5 sm:p-3 flex items-center gap-1.5 sm:gap-3 opacity-40 pointer-events-none">
-            <div class="w-9 h-9 sm:w-14 sm:h-14 bg-white rounded-lg sm:rounded-xl shadow-inner flex items-center justify-center text-lg sm:text-3xl shrink-0">
-              💖
-            </div>
-            <div class="text-left overflow-hidden">
-              <span class="block text-[9px] sm:text-xs font-semibold uppercase text-rose-800">Paso 4</span>
-              <span class="block text-xs sm:text-lg font-bold text-rose-950 truncate">¡Mucho Amor!</span>
-            </div>
-          </div>
-
+          <!-- Se inyecta mediante JS según la categoría -->
         </div>
 
         <button id="btn-reset-plant" class="mt-2.5 sm:mt-4 w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm border-2 border-slate-300 transition">
@@ -324,7 +321,7 @@
             </span>
           </div>
 
-          <!-- Gotas de lluvia animadas -->
+          <!-- Efectos climáticos superpuestos -->
           <div id="water-shower" class="absolute inset-0 pointer-events-none hidden z-20">
             <div class="absolute left-1/4 top-10 text-2xl sm:text-3xl animate-[rain-fall_0.7s_infinite]">💧</div>
             <div class="absolute left-1/3 top-6 text-3xl sm:text-4xl animate-[rain-fall_0.8s_infinite_0.15s]">💦</div>
@@ -332,33 +329,29 @@
             <div class="absolute left-2/3 top-6 text-3xl sm:text-4xl animate-[rain-fall_0.75s_infinite_0.1s]">💦</div>
           </div>
 
-          <!-- Resplandor solar envolvente -->
           <div id="sun-glow" class="absolute inset-0 pointer-events-none hidden items-center justify-center bg-amber-300/25 backdrop-blur-[2px] transition z-20">
             <div class="text-5xl sm:text-7xl animate-spin" style="animation-duration: 9s;">☀️</div>
             <span class="absolute text-3xl sm:text-5xl font-black text-amber-500 drop-shadow-md animate-pulse">¡Calorcito rico! ✨</span>
           </div>
 
-          <!-- Lluvia de corazones para paso amor -->
           <div id="love-shower" class="absolute inset-0 pointer-events-none hidden items-center justify-center z-20">
-            <span class="text-4xl sm:text-6xl animate-ping">💖 💕 🌸</span>
+            <span class="text-4xl sm:text-6xl animate-ping">💖 💕 🌸 ✨</span>
           </div>
 
           <div class="w-full h-full flex flex-col justify-end items-center relative z-10" id="plant-interactive-wrapper">
+            
+            <!-- SVG DEL CICLO DE LA PLANTA (MACETA, BROTE Y FLOR) -->
             <svg id="plant-svg-canvas" class="screen-compact-svg w-full max-w-[240px] xs:max-w-[280px] sm:max-w-[360px] md:max-w-[410px] h-auto max-h-[290px] xs:max-h-[330px] sm:max-h-[390px] transition-transform duration-300" viewBox="0 0 240 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-              
-              <!-- Clip path circular para incrustar la foto del niño en el centro de la flor (ampliado) -->
               <defs>
                 <clipPath id="child-photo-clip">
                   <circle cx="120" cy="58" r="38" />
                 </clipPath>
               </defs>
 
-              <!-- TIERRA DENTRO DE LA MACETA -->
               <ellipse cx="120" cy="210" rx="72" ry="19" fill="#451a03" />
               <ellipse cx="120" cy="207" rx="66" ry="15" fill="#582C0C" />
               <ellipse cx="120" cy="205" rx="60" ry="12" fill="#78350F" />
 
-              <!-- ESTADO 0: Tierra vacía esperando semilla -->
               <g id="stage-0-empty" class="transition-all duration-500">
                 <circle cx="120" cy="204" r="5" fill="#3D1D06" opacity="0.5"/>
                 <circle cx="95" cy="203" r="4" fill="#3D1D06" opacity="0.4"/>
@@ -366,7 +359,6 @@
                 <text x="120" y="170" text-anchor="middle" fill="#92400e" font-size="14" font-weight="bold">¡Pon la semillita aquí! 👇</text>
               </g>
 
-              <!-- ESTADO 1: Semillita tierna durmiendo -->
               <g id="stage-1-seed" class="hidden transition-all duration-500">
                 <ellipse cx="120" cy="200" rx="14" ry="17" fill="#854D0E" stroke="#582C0C" stroke-width="2" transform="rotate(-10 120 200)" />
                 <path d="M113 197 Q116 193 119 197" stroke="#FEF08A" stroke-width="2.5" stroke-linecap="round" fill="none"/>
@@ -375,11 +367,8 @@
                 <text x="138" y="180" fill="#38bdf8" font-size="16" font-weight="black" class="anim-bounce-gentle">Zzz...</text>
               </g>
 
-              <!-- ESTADO 2: Brote tierno con carita alegre -->
               <g id="stage-2-sprout" class="hidden transition-all duration-500">
-                <!-- Raíces bajo tierra -->
                 <path d="M120 208 Q114 228 102 236 M120 208 Q126 228 136 234 M120 215 Q119 236 120 244" stroke="#fde047" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
-                <!-- Tallo tierno -->
                 <path d="M120 204 Q118 170 120 150" stroke="#22C55E" stroke-width="7" stroke-linecap="round" />
                 <path d="M120 158 C102 148 98 128 114 132 C122 135 122 152 120 158 Z" fill="#4ADE80" stroke="#16A34A" stroke-width="2"/>
                 <path d="M120 158 C138 148 142 128 126 132 C118 135 118 152 120 158 Z" fill="#22C55E" stroke="#15803D" stroke-width="2"/>
@@ -392,7 +381,6 @@
                 <circle cx="126" cy="170" r="2" fill="#F43F5E" opacity="0.6"/>
               </g>
 
-              <!-- ESTADO 3: Planta joven grande con hojas frondosas -->
               <g id="stage-3-growing" class="hidden transition-all duration-500">
                 <path d="M120 210 Q106 230 92 242 M120 210 Q134 230 148 240 M120 215 Q120 238 120 248" stroke="#fef08a" stroke-width="3.5" stroke-linecap="round"/>
                 <path d="M120 206 Q115 145 120 95" stroke="#16A34A" stroke-width="10" stroke-linecap="round"/>
@@ -400,7 +388,6 @@
                 <path d="M96 128 Q108 140 118 155" stroke="#15803D" stroke-width="2" fill="none"/>
                 <path d="M122 135 C160 120 174 90 148 98 C128 106 124 126 122 135 Z" fill="#4ADE80" stroke="#16A34A" stroke-width="3"/>
                 <path d="M144 108 Q132 122 122 135" stroke="#16A34A" stroke-width="2" fill="none"/>
-                <!-- Capullo esperando florecer -->
                 <circle cx="120" cy="90" r="14" fill="#86EFAC" stroke="#16A34A" stroke-width="3"/>
                 <circle cx="120" cy="87" r="9" fill="#F472B6"/>
                 <g class="anim-blink">
@@ -410,15 +397,12 @@
                 <path d="M116 121 Q120 125 124 121" stroke="#065F46" stroke-width="2" stroke-linecap="round" fill="none"/>
               </g>
 
-              <!-- ESTADO 4: Planta gigante con flor hermosa y la carita del niño -->
               <g id="stage-4-flower" class="hidden transition-all duration-700">
                 <path d="M120 206 Q115 140 120 70" stroke="#15803D" stroke-width="11" stroke-linecap="round"/>
                 <path d="M118 145 C65 130 52 88 88 100 C110 108 116 136 118 145 Z" fill="#22C55E" stroke="#166534" stroke-width="3"/>
                 <path d="M122 120 C175 105 188 65 152 78 C130 86 124 110 122 120 Z" fill="#4ADE80" stroke="#15803D" stroke-width="3"/>
                 
-                <!-- FLOR GIGANTE CON MOVIMIENTO WIGGLE -->
                 <g class="anim-wiggle origin-bottom" style="transform-origin: 120px 70px;">
-                  <!-- Pétalos exteriores aumentados de tamaño para enmarcar la cara más grande -->
                   <circle cx="120" cy="12" r="26" fill="#F43F5E" stroke="#E11D48" stroke-width="2.5"/>
                   <circle cx="120" cy="104" r="26" fill="#F43F5E" stroke="#E11D48" stroke-width="2.5"/>
                   <circle cx="74" cy="58" r="26" fill="#FB7185" stroke="#E11D48" stroke-width="2.5"/>
@@ -428,16 +412,13 @@
                   <circle cx="86" cy="92" r="26" fill="#FB7185" stroke="#E11D48" stroke-width="2.5"/>
                   <circle cx="154" cy="92" r="26" fill="#FB7185" stroke="#E11D48" stroke-width="2.5"/>
                   
-                  <!-- Corona dorada alrededor del centro -->
                   <circle cx="120" cy="58" r="41" fill="#FBBF24" stroke="#F59E0B" stroke-width="4" />
 
-                  <!-- CENTRO DE LA FLOR: FOTO DEL NIÑO O CARITA POR DEFECTO -->
                   <g id="flower-child-photo-container" class="hidden">
                     <image id="svg-child-photo" href="" x="82" y="20" width="76" height="76" preserveAspectRatio="xMidYMid slice" clip-path="url(#child-photo-clip)"/>
                     <circle cx="120" cy="58" r="38" fill="none" stroke="#F59E0B" stroke-width="3"/>
                   </g>
 
-                  <!-- CARITA PREDETERMINADA SI NO HAY FOTO -->
                   <g id="flower-default-face">
                     <circle cx="120" cy="58" r="38" fill="#FDE047" />
                     <g class="anim-blink">
@@ -452,7 +433,6 @@
                   </g>
                 </g>
 
-                <!-- Mariposas juguetonas alrededor -->
                 <g class="anim-bounce-gentle">
                   <path d="M180 35 C186 24 198 28 192 40 C198 46 186 52 180 40 Z" fill="#A855F7" stroke="#6B21A8" stroke-width="1.5"/>
                   <circle cx="180" cy="38" r="2.5" fill="#4C1D95"/>
@@ -463,7 +443,6 @@
                 </g>
               </g>
 
-              <!-- MACETA GRANDE DIBUJADA EN PRIMER PLANO -->
               <g id="flowerpot">
                 <ellipse cx="120" cy="272" rx="65" ry="8" fill="#000000" opacity="0.12"/>
                 <polygon points="58,202 74,268 166,268 182,202" fill="#EA580C" />
@@ -477,7 +456,245 @@
                 <circle cx="102" cy="239" r="4" fill="#F87171" opacity="0.7"/>
                 <circle cx="138" cy="239" r="4" fill="#F87171" opacity="0.7"/>
               </g>
+            </svg>
 
+            <!-- SVG DEL CICLO DE LA MARIPOSA (VIBRANTE, ANIMADO Y DETALLADO) -->
+            <svg id="butterfly-svg-canvas" class="screen-compact-svg w-full max-w-[240px] xs:max-w-[280px] sm:max-w-[360px] md:max-w-[410px] h-auto max-h-[290px] xs:max-h-[330px] sm:max-h-[390px] transition-transform duration-300 hidden" viewBox="0 0 240 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <clipPath id="butterfly-photo-clip">
+                  <circle cx="120" cy="98" r="38" />
+                </clipPath>
+                <linearGradient id="bfWingTopGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FF6B95" />
+                  <stop offset="45%" stop-color="#FF2E93" />
+                  <stop offset="100%" stop-color="#9333EA" />
+                </linearGradient>
+                <linearGradient id="bfWingBottomGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#38BDF8" />
+                  <stop offset="55%" stop-color="#6366F1" />
+                  <stop offset="100%" stop-color="#8B5CF6" />
+                </linearGradient>
+                <linearGradient id="bfCocoonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FDE047" />
+                  <stop offset="30%" stop-color="#34D399" />
+                  <stop offset="100%" stop-color="#059669" />
+                </linearGradient>
+                <linearGradient id="bfLeafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#86EFAC" />
+                  <stop offset="100%" stop-color="#16A34A" />
+                </linearGradient>
+                <linearGradient id="bfEggGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FEF9C3" />
+                  <stop offset="40%" stop-color="#FDE047" />
+                  <stop offset="100%" stop-color="#F59E0B" />
+                </linearGradient>
+              </defs>
+
+              <!-- Escenario de Rama de Árbol -->
+              <g id="bf-scenery-branch">
+                <path d="M10 242 Q100 222 230 248" stroke="#3D1D06" stroke-width="15" stroke-linecap="round" opacity="0.3" />
+                <path d="M10 238 Q100 216 230 242" stroke="#854D0E" stroke-width="14" stroke-linecap="round" />
+                <path d="M18 236 Q100 214 220 240" stroke="#A16207" stroke-width="5" stroke-linecap="round" opacity="0.7"/>
+                
+                <path d="M75 225 C40 200 30 155 80 162 C115 168 112 210 75 225 Z" fill="url(#bfLeafGrad)" stroke="#15803D" stroke-width="3" />
+                <path d="M76 166 Q82 195 75 225" stroke="#166534" stroke-width="2.5" fill="none" opacity="0.6"/>
+                <circle cx="58" cy="180" r="3.5" fill="#BAE6FD" opacity="0.8" />
+                <circle cx="59" cy="179" r="1.2" fill="#FFFFFF" />
+
+                <path d="M165 232 C205 210 220 165 175 158 C135 150 130 198 165 232 Z" fill="url(#bfLeafGrad)" stroke="#15803D" stroke-width="3" />
+                <path d="M173 160 Q162 192 165 232" stroke="#166534" stroke-width="2.5" fill="none" opacity="0.6"/>
+                <circle cx="188" cy="185" r="4" fill="#BAE6FD" opacity="0.85" />
+                <circle cx="189" cy="184" r="1.5" fill="#FFFFFF" />
+
+                <g class="anim-wiggle" style="transform-origin: 30px 225px;">
+                  <circle cx="26" cy="221" r="5" fill="#F43F5E" />
+                  <circle cx="34" cy="221" r="5" fill="#F43F5E" />
+                  <circle cx="30" cy="217" r="5" fill="#F43F5E" />
+                  <circle cx="30" cy="225" r="5" fill="#F43F5E" />
+                  <circle cx="30" cy="221" r="3.5" fill="#FBBF24" />
+                </g>
+
+                <g class="anim-bounce-gentle">
+                  <ellipse cx="212" cy="235" rx="5" ry="4" fill="#EF4444" stroke="#991B1B" stroke-width="1"/>
+                  <circle cx="216" cy="235" r="2.5" fill="#1E293B"/>
+                  <circle cx="210" cy="233" r="1" fill="#1E293B"/>
+                  <circle cx="213" cy="236" r="1" fill="#1E293B"/>
+                </g>
+              </g>
+
+              <!-- ESTADO 0 MARIPOSA: Esperando el huevito -->
+              <g id="bf-stage-0" class="transition-all duration-500">
+                <ellipse cx="120" cy="185" rx="22" ry="14" fill="#A7F3D0" opacity="0.5" />
+                <ellipse cx="120" cy="185" rx="16" ry="10" stroke="#059669" stroke-width="3" stroke-dasharray="5 4" fill="none" class="animate-pulse" />
+                <text x="120" y="142" text-anchor="middle" fill="#047857" font-size="14" font-weight="extrabold">¡Pon el huevito aquí! 👇</text>
+                <text x="120" y="160" text-anchor="middle" fill="#065F46" font-size="20" class="anim-sparkle">✨</text>
+              </g>
+
+              <!-- ESTADO 1 MARIPOSA: Huevito perlado -->
+              <g id="bf-stage-1" class="hidden transition-all duration-500">
+                <g class="anim-bounce-gentle origin-bottom" style="transform-origin: 120px 190px;">
+                  <circle cx="120" cy="180" r="22" fill="#FEF08A" opacity="0.4" class="anim-sparkle"/>
+                  <ellipse cx="120" cy="195" rx="16" ry="5" fill="#064E3B" opacity="0.3"/>
+                  <ellipse cx="120" cy="180" rx="17" ry="21" fill="url(#bfEggGrad)" stroke="#D97706" stroke-width="3" />
+                  <ellipse cx="114" cy="172" rx="4" ry="7" fill="#FFFFFF" opacity="0.75" />
+                  <path d="M112 178 Q116 174 120 178" stroke="#78350F" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                  <path d="M124 178 Q128 174 132 178" stroke="#78350F" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                  <path d="M117 186 Q122 191 127 186" stroke="#78350F" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+                  <circle cx="110" cy="183" r="3" fill="#F43F5E" opacity="0.6"/>
+                  <circle cx="134" cy="183" r="3" fill="#F43F5E" opacity="0.6"/>
+                  <text x="142" y="160" fill="#38BDF8" font-size="18" font-weight="black" class="anim-bounce-gentle">Zzz...</text>
+                  <text x="96" y="168" fill="#F59E0B" font-size="14" class="anim-sparkle">✨</text>
+                  <text x="140" y="195" fill="#F59E0B" font-size="14" class="anim-sparkle">⭐</text>
+                </g>
+              </g>
+
+              <!-- ESTADO 2 MARIPOSA: Oruga comelona animada -->
+              <g id="bf-stage-2" class="hidden transition-all duration-500">
+                <g class="anim-caterpillar">
+                  <ellipse cx="68" cy="204" rx="6" ry="2.5" fill="#064E3B" opacity="0.3"/>
+                  <ellipse cx="90" cy="200" rx="6" ry="2.5" fill="#064E3B" opacity="0.3"/>
+                  <ellipse cx="114" cy="195" rx="6" ry="2.5" fill="#064E3B" opacity="0.3"/>
+                  <ellipse cx="138" cy="190" rx="6" ry="2.5" fill="#064E3B" opacity="0.3"/>
+
+                  <ellipse cx="68" cy="202" rx="4.5" ry="3.5" fill="#FBBF24" stroke="#D97706" stroke-width="1.5"/>
+                  <ellipse cx="90" cy="198" rx="4.5" ry="3.5" fill="#FBBF24" stroke="#D97706" stroke-width="1.5"/>
+                  <ellipse cx="114" cy="193" rx="4.5" ry="3.5" fill="#FBBF24" stroke="#D97706" stroke-width="1.5"/>
+                  <ellipse cx="138" cy="188" rx="4.5" ry="3.5" fill="#FBBF24" stroke="#D97706" stroke-width="1.5"/>
+
+                  <circle cx="68" cy="190" r="14" fill="#34D399" stroke="#059669" stroke-width="2.5"/>
+                  <circle cx="68" cy="184" r="3" fill="#FEF08A"/>
+                  <circle cx="90" cy="183" r="16" fill="#10B981" stroke="#047857" stroke-width="2.5"/>
+                  <circle cx="90" cy="176" r="3.5" fill="#F472B6"/>
+                  <circle cx="114" cy="177" r="17" fill="#4ADE80" stroke="#16A34A" stroke-width="2.5"/>
+                  <circle cx="114" cy="169" r="4" fill="#FEF08A"/>
+                  <circle cx="138" cy="171" r="18" fill="#22C55E" stroke="#15803D" stroke-width="2.5"/>
+                  <circle cx="138" cy="162" r="4" fill="#F472B6"/>
+
+                  <path d="M156 148 Q150 132 142 128" stroke="#15803D" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+                  <path d="M168 150 Q174 132 182 129" stroke="#15803D" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+                  <circle cx="140" cy="127" r="5" fill="#EC4899" stroke="#BE185D" stroke-width="1.5"/>
+                  <circle cx="184" cy="128" r="5" fill="#EC4899" stroke="#BE185D" stroke-width="1.5"/>
+
+                  <circle cx="163" cy="163" r="21" fill="#86EFAC" stroke="#15803D" stroke-width="3"/>
+                  <g class="anim-blink">
+                    <circle cx="156" cy="158" r="4.5" fill="#064E3B"/>
+                    <circle cx="172" cy="158" r="4.5" fill="#064E3B"/>
+                    <circle cx="157.5" cy="156" r="1.8" fill="#FFFFFF"/>
+                    <circle cx="173.5" cy="156" r="1.8" fill="#FFFFFF"/>
+                  </g>
+                  <path d="M157 169 Q164 178 171 169" stroke="#064E3B" stroke-width="2.5" stroke-linecap="round" fill="#F43F5E"/>
+                  <circle cx="150" cy="167" r="3.5" fill="#FB7185" opacity="0.7"/>
+                  <circle cx="178" cy="167" r="3.5" fill="#FB7185" opacity="0.7"/>
+
+                  <g class="anim-munch">
+                    <path d="M178 175 Q198 165 192 188 Q182 182 178 175 Z" fill="#22C55E" stroke="#15803D" stroke-width="2"/>
+                    <circle cx="180" cy="176" r="3.5" fill="#BAE6FD" />
+                    <circle cx="184" cy="168" r="1.5" fill="#16A34A" />
+                    <circle cx="189" cy="176" r="1.2" fill="#4ADE80" />
+                  </g>
+                </g>
+              </g>
+
+              <!-- ESTADO 3 MARIPOSA: Crisálida mágica colgando -->
+              <g id="bf-stage-3" class="hidden transition-all duration-500">
+                <g class="anim-cocoon">
+                  <line x1="120" y1="120" x2="120" y2="148" stroke="#FEF08A" stroke-width="4.5" stroke-linecap="round" />
+                  <line x1="120" y1="120" x2="120" y2="148" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" />
+                  <circle cx="120" cy="120" r="6" fill="#FBBF24" stroke="#D97706" stroke-width="2"/>
+
+                  <path d="M120 148 C95 156 82 195 120 232 C158 195 145 156 120 148 Z" fill="url(#bfCocoonGrad)" stroke="#047857" stroke-width="3.5" />
+                  
+                  <path d="M102 176 Q120 192 138 176" stroke="#FEF08A" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.9"/>
+                  <path d="M106 195 Q120 208 134 195" stroke="#FEF08A" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.9"/>
+                  <path d="M112 214 Q120 222 128 214" stroke="#FEF08A" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.9"/>
+                  <ellipse cx="106" cy="165" rx="3" ry="8" fill="#FFFFFF" opacity="0.65" transform="rotate(-18 106 165)"/>
+
+                  <g class="anim-blink">
+                    <circle cx="114" cy="170" r="2.5" fill="#064E3B"/>
+                    <circle cx="126" cy="170" r="2.5" fill="#064E3B"/>
+                  </g>
+                  <path d="M117 175 Q120 178 123 175" stroke="#064E3B" stroke-width="2" fill="none"/>
+                  <circle cx="110" cy="173" r="2.2" fill="#F43F5E" opacity="0.6"/>
+                  <circle cx="130" cy="173" r="2.2" fill="#F43F5E" opacity="0.6"/>
+
+                  <text x="145" y="175" fill="#FEF08A" font-size="16" font-weight="black" class="anim-bounce-gentle">✨ Zzz</text>
+                  <text x="86" y="200" fill="#38BDF8" font-size="14" class="anim-sparkle">⭐</text>
+                  <text x="144" y="210" fill="#EC4899" font-size="14" class="anim-sparkle">💖</text>
+                </g>
+              </g>
+
+              <!-- ESTADO 4 MARIPOSA: Mariposa majestuosa con la carita del niño -->
+              <g id="bf-stage-4" class="hidden transition-all duration-700">
+                <g class="anim-fairy">
+                  <!-- ALAS IZQUIERDAS (ALETEO INDEPENDIENTE) -->
+                  <g class="anim-wing-left">
+                    <path d="M120 115 C65 30 5 45 15 110 C22 152 75 148 120 125 Z" fill="url(#bfWingTopGrad)" stroke="#BE185D" stroke-width="3"/>
+                    <path d="M115 112 C72 45 24 58 32 108 C38 138 78 135 115 120 Z" fill="#F472B6" opacity="0.5"/>
+                    <circle cx="50" cy="80" r="16" fill="#FBBF24" stroke="#F59E0B" stroke-width="2"/>
+                    <circle cx="50" cy="80" r="9" fill="#FFFFFF" opacity="0.8"/>
+                    <circle cx="78" cy="65" r="7" fill="#38BDF8" opacity="0.9"/>
+                    <circle cx="36" cy="112" r="6" fill="#FDE047" opacity="0.9"/>
+                    
+                    <path d="M120 126 C75 142 32 155 42 195 C52 230 102 215 120 152 Z" fill="url(#bfWingBottomGrad)" stroke="#6D28D9" stroke-width="3"/>
+                    <circle cx="68" cy="186" r="11" fill="#F43F5E" opacity="0.85"/>
+                    <circle cx="68" cy="186" r="6" fill="#FEF08A"/>
+                    <circle cx="92" cy="195" r="5" fill="#34D399"/>
+                  </g>
+
+                  <!-- ALAS DERECHAS (ALETEO INDEPENDIENTE) -->
+                  <g class="anim-wing-right">
+                    <path d="M120 115 C175 30 235 45 225 110 C218 152 165 148 120 125 Z" fill="url(#bfWingTopGrad)" stroke="#BE185D" stroke-width="3"/>
+                    <path d="M125 112 C168 45 216 58 208 108 C202 138 162 135 125 120 Z" fill="#F472B6" opacity="0.5"/>
+                    <circle cx="190" cy="80" r="16" fill="#FBBF24" stroke="#F59E0B" stroke-width="2"/>
+                    <circle cx="190" cy="80" r="9" fill="#FFFFFF" opacity="0.8"/>
+                    <circle cx="162" cy="65" r="7" fill="#38BDF8" opacity="0.9"/>
+                    <circle cx="204" cy="112" r="6" fill="#FDE047" opacity="0.9"/>
+
+                    <path d="M120 126 C165 142 208 155 198 195 C188 230 138 215 120 152 Z" fill="url(#bfWingBottomGrad)" stroke="#6D28D9" stroke-width="3"/>
+                    <circle cx="172" cy="186" r="11" fill="#F43F5E" opacity="0.85"/>
+                    <circle cx="172" cy="186" r="6" fill="#FEF08A"/>
+                    <circle cx="148" cy="195" r="5" fill="#34D399"/>
+                  </g>
+
+                  <!-- CUERPO DE LA MARIPOSA -->
+                  <ellipse cx="120" cy="148" rx="10" ry="32" fill="#581C87" stroke="#3B0764" stroke-width="2.5"/>
+                  <line x1="114" y1="138" x2="126" y2="138" stroke="#FDE047" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="113" y1="150" x2="127" y2="150" stroke="#FDE047" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="115" y1="162" x2="125" y2="162" stroke="#FDE047" stroke-width="2.5" stroke-linecap="round"/>
+
+                  <!-- ANTENAS CON CORAZONES -->
+                  <path d="M112 64 Q92 28 78 35" stroke="#4C1D95" stroke-width="4" stroke-linecap="round" fill="none"/>
+                  <path d="M128 64 Q148 28 162 35" stroke="#4C1D95" stroke-width="4" stroke-linecap="round" fill="none"/>
+                  <circle cx="76" cy="35" r="6" fill="#F43F5E" stroke="#BE185D" stroke-width="1.5" class="anim-sparkle"/>
+                  <circle cx="164" cy="35" r="6" fill="#F43F5E" stroke="#BE185D" stroke-width="1.5" class="anim-sparkle"/>
+
+                  <!-- CABEZA: FOTO DEL NIÑO O CARITA -->
+                  <circle cx="120" cy="98" r="41" fill="#FBBF24" stroke="#F59E0B" stroke-width="4" />
+
+                  <g id="bf-child-photo-container" class="hidden">
+                    <image id="bf-svg-child-photo" href="" x="82" y="60" width="76" height="76" preserveAspectRatio="xMidYMid slice" clip-path="url(#butterfly-photo-clip)"/>
+                    <circle cx="120" cy="98" r="38" fill="none" stroke="#F59E0B" stroke-width="3.5"/>
+                  </g>
+
+                  <g id="bf-default-face">
+                    <circle cx="120" cy="98" r="38" fill="#FDE047" />
+                    <g class="anim-blink">
+                      <circle cx="107" cy="92" r="5" fill="#4C1D95" />
+                      <circle cx="133" cy="92" r="5" fill="#4C1D95" />
+                      <circle cx="109" cy="90" r="1.8" fill="#FFFFFF" />
+                      <circle cx="135" cy="90" r="1.8" fill="#FFFFFF" />
+                    </g>
+                    <path d="M107 106 Q120 120 133 106" stroke="#4C1D95" stroke-width="4" fill="none" stroke-linecap="round"/>
+                    <ellipse cx="98" cy="102" rx="6" ry="4" fill="#F43F5E" opacity="0.75"/>
+                    <ellipse cx="142" cy="102" rx="6" ry="4" fill="#F43F5E" opacity="0.75"/>
+                  </g>
+
+                  <text x="42" y="45" fill="#FBBF24" font-size="16" class="anim-sparkle">✨</text>
+                  <text x="186" y="45" fill="#FBBF24" font-size="16" class="anim-sparkle">✨</text>
+                  <text x="32" y="165" fill="#EC4899" font-size="14" class="anim-sparkle">💖</text>
+                  <text x="198" y="165" fill="#38BDF8" font-size="14" class="anim-sparkle">⭐</text>
+                </g>
+              </g>
             </svg>
           </div>
 
@@ -493,44 +710,45 @@
 
     </div>
 
+    <!-- MODO 2: ORDENAR EL CICLO DE VIDA (1, 2, 3 y 4) -->
     <div id="mode-sequence-container" class="w-full hidden flex-col items-center">
       
       <div class="bg-white/90 backdrop-blur-sm p-2.5 sm:p-6 rounded-2xl sm:rounded-3xl border-2 sm:border-4 border-emerald-400 shadow-xl w-full max-w-4xl text-center">
-        <h2 class="text-base xs:text-lg sm:text-2xl font-black text-emerald-900 mb-0.5 sm:mb-1">
+        <h2 id="sequence-game-title" class="text-base xs:text-lg sm:text-2xl font-black text-emerald-900 mb-0.5 sm:mb-1">
           ¡Ordena la Historia de la Plantita! 📖
         </h2>
         <p class="text-slate-600 font-medium text-[11px] sm:text-base mb-3 sm:mb-6">
           Arrastra o toca cada dibujo para colocarlo en su número correspondiente:
         </p>
 
-        <!-- Casillas receptoras numeradas (1, 2, 3, 4) con alturas fluidas -->
+        <!-- 4 Casillas receptoras numeradas -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 mb-3 sm:mb-6">
           
           <div data-slot="1" class="sequence-slot border-2 sm:border-4 border-dashed border-amber-400 bg-amber-50/70 rounded-xl sm:rounded-2xl h-28 xs:h-32 sm:h-44 md:h-48 flex flex-col items-center justify-center p-1 sm:p-2 relative transition">
             <span class="absolute top-1 sm:top-2 left-1.5 sm:left-3 text-base sm:text-2xl font-black text-amber-500">1º</span>
             <div class="slot-content flex flex-col items-center justify-center h-full w-full pointer-events-none text-center px-1">
-              <span class="text-amber-600 text-[11px] sm:text-sm font-bold">¿Qué va primero?</span>
+              <span id="slot-hint-1" class="text-amber-600 text-[11px] sm:text-sm font-bold">¿Qué va primero?</span>
             </div>
           </div>
 
           <div data-slot="2" class="sequence-slot border-2 sm:border-4 border-dashed border-sky-400 bg-sky-50/70 rounded-xl sm:rounded-2xl h-28 xs:h-32 sm:h-44 md:h-48 flex flex-col items-center justify-center p-1 sm:p-2 relative transition">
             <span class="absolute top-1 sm:top-2 left-1.5 sm:left-3 text-base sm:text-2xl font-black text-sky-500">2º</span>
             <div class="slot-content flex flex-col items-center justify-center h-full w-full pointer-events-none text-center px-1">
-              <span class="text-sky-600 text-[11px] sm:text-sm font-bold">¿Qué pasa después?</span>
+              <span id="slot-hint-2" class="text-sky-600 text-[11px] sm:text-sm font-bold">¿Qué pasa después?</span>
             </div>
           </div>
 
           <div data-slot="3" class="sequence-slot border-2 sm:border-4 border-dashed border-emerald-400 bg-emerald-50/70 rounded-xl sm:rounded-2xl h-28 xs:h-32 sm:h-44 md:h-48 flex flex-col items-center justify-center p-1 sm:p-2 relative transition">
             <span class="absolute top-1 sm:top-2 left-1.5 sm:left-3 text-base sm:text-2xl font-black text-emerald-500">3º</span>
             <div class="slot-content flex flex-col items-center justify-center h-full w-full pointer-events-none text-center px-1">
-              <span class="text-emerald-600 text-[11px] sm:text-sm font-bold">¿Cómo crece?</span>
+              <span id="slot-hint-3" class="text-emerald-600 text-[11px] sm:text-sm font-bold">¿Cómo crece?</span>
             </div>
           </div>
 
           <div data-slot="4" class="sequence-slot border-2 sm:border-4 border-dashed border-pink-400 bg-pink-50/70 rounded-xl sm:rounded-2xl h-28 xs:h-32 sm:h-44 md:h-48 flex flex-col items-center justify-center p-1 sm:p-2 relative transition">
             <span class="absolute top-1 sm:top-2 left-1.5 sm:left-3 text-base sm:text-2xl font-black text-pink-500">4º</span>
             <div class="slot-content flex flex-col items-center justify-center h-full w-full pointer-events-none text-center px-1">
-              <span class="text-pink-600 text-[11px] sm:text-sm font-bold">¿Al final qué nace?</span>
+              <span id="slot-hint-4" class="text-pink-600 text-[11px] sm:text-sm font-bold">¿Al final qué nace?</span>
             </div>
           </div>
 
@@ -538,7 +756,7 @@
 
         <h3 class="text-slate-700 font-bold text-xs sm:text-base mb-1.5 sm:mb-3">Tus tarjetas mágicas:</h3>
         <div id="cards-tray" class="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 min-h-[95px] p-2 sm:p-3 bg-emerald-50/60 rounded-xl sm:rounded-2xl border-2 border-emerald-200">
-          <!-- Tarjetas barajadas dinámicamente con JS -->
+          <!-- Inyectado por JS -->
         </div>
 
         <div class="mt-3 sm:mt-6 flex flex-wrap gap-2 sm:gap-4 justify-center items-center">
@@ -557,7 +775,6 @@
 
   </main>
 
-  <!-- Pie de página con logotipo y firma de Despierta Mentes -->
   <footer class="relative z-10 w-full max-w-5xl mx-auto px-2 sm:px-4 py-2 sm:py-3 flex flex-wrap items-center justify-between gap-2 text-emerald-900 border-t border-emerald-200/60 mt-3 mb-14 sm:mb-2">
     <div class="flex items-center gap-2">
       <img src="logofirma.png" alt="Despierta Mentes" class="h-7 sm:h-11 object-contain drop-shadow-sm" onerror="this.onerror=null; this.src='logofirma.jpg'; this.onerror=function(){this.src='logofirma'; this.onerror=function(){this.style.display='none';};};">
@@ -567,11 +784,11 @@
       </div>
     </div>
     <div class="text-[10px] sm:text-xs font-semibold text-emerald-800 bg-white/70 px-2.5 py-0.5 sm:py-1 rounded-full border border-emerald-200">
-      🌱 Jardín Infantil Interactivo
+      🌱🦋 Jardín de Ciencias Preescolar
     </div>
   </footer>
 
-  <!-- FIRMA CORPORATIVA FLOTANTE (ESTILO DESPIERTA MENTES) CON ESCALA RESPONSIVA -->
+  <!-- FIRMA CORPORATIVA FLOTANTE EN ESQUINA DERECHA -->
   <div class="fixed bottom-2 right-2 sm:bottom-4 sm:right-4 z-40 bg-white/95 hover:bg-white backdrop-blur-md px-2.5 py-1.5 sm:px-4 sm:py-2.5 rounded-2xl sm:rounded-3xl border-2 border-emerald-300/80 shadow-lg shadow-emerald-900/10 transition-all duration-300 hover:scale-105 hover:shadow-xl flex flex-col items-center justify-center pointer-events-auto select-none group origin-bottom-right scale-90 sm:scale-100">
     <span class="text-[8px] sm:text-[10px] font-black uppercase tracking-wider text-slate-500 group-hover:text-emerald-700 transition-colors">
       Creada por
@@ -586,31 +803,27 @@
 
   <canvas id="confetti-canvas" class="fixed inset-0 pointer-events-none z-50"></canvas>
 
-  <!-- PANTALLA DE CARGA / SPLASH SCREEN INICIAL (2.8 segundos) -->
+  <!-- PANTALLA DE CARGA / SPLASH SCREEN INICIAL (2.7s) -->
   <div id="splash-screen" class="fixed inset-0 z-[100] bg-gradient-to-b from-emerald-100 via-sky-100 to-amber-100 flex flex-col items-center justify-center p-3 sm:p-6 transition-opacity duration-700 select-none overflow-y-auto">
     <div class="flex flex-col items-center text-center max-w-md w-full anim-splash-pulse my-auto">
       
-      <!-- Contenedor del Icono Gigante con respaldo automático de extensión -->
       <div class="relative w-52 h-52 xs:w-60 xs:h-60 sm:w-72 sm:h-72 rounded-[2.5rem] bg-white/95 p-3.5 sm:p-5 shadow-2xl border-4 sm:border-6 border-emerald-400 mb-4 sm:mb-5 flex items-center justify-center overflow-hidden">
         <img 
           id="splash-app-icon" 
           src="icono.png" 
-          alt="Icono Ciclo de la Planta" 
+          alt="Icono de la Aplicación" 
           class="w-full h-full object-cover rounded-3xl drop-shadow-md"
           onerror="this.onerror=null; this.src='icono.jpg'; this.onerror=function(){this.src='icono'; this.onerror=function(){this.style.display='none'; document.getElementById('splash-fallback-icon').classList.remove('hidden');};};"
         >
-        <!-- Icono de respaldo en SVG si no se encuentra la imagen física -->
         <div id="splash-fallback-icon" class="hidden flex flex-col items-center justify-center text-6xl sm:text-7xl">
-          🌱✨
+          🌱🦋
         </div>
       </div>
 
-      <!-- Título de la Aplicación -->
       <h1 class="text-2xl xs:text-3xl sm:text-4xl font-black text-emerald-900 tracking-wide mb-1 drop-shadow-sm">
-        El Maravilloso Ciclo de la Planta
+        El Maravilloso Ciclo de la Vida
       </h1>
 
-      <!-- Barra de progreso lúdica -->
       <div class="w-full max-w-xs sm:max-w-sm bg-white/90 rounded-full h-4 sm:h-5 p-1 border-2 border-emerald-400 shadow-inner overflow-hidden my-3">
         <div id="splash-progress-bar" class="h-full bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full w-0 transition-all duration-300 loading-bar-fill"></div>
       </div>
@@ -619,7 +832,6 @@
         Preparando el jardín mágico... 🌸
       </span>
 
-      <!-- Tarjeta Corporativa con Logo de Firma Despierta Mentes -->
       <div class="flex flex-col items-center justify-center bg-white/95 backdrop-blur-md px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl border-2 border-emerald-300 shadow-md">
         <span class="text-[9px] sm:text-[10px] font-black uppercase tracking-wider text-slate-500">
           Creada por
@@ -635,70 +847,56 @@
     </div>
   </div>
 
-  <!-- MODAL DE FOTO SELFIE INICIAL (Responsive & Scroll-safe) -->
+  <!-- MODAL DE FOTO SELFIE INICIAL -->
   <div id="camera-modal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
     <div class="bg-white rounded-3xl p-4 sm:p-7 max-w-md w-full text-center border-4 border-amber-400 shadow-2xl anim-pop relative my-auto max-h-[95vh] overflow-y-auto custom-scrollbar">
       
       <div class="text-4xl sm:text-5xl mb-1">📸✨</div>
       <h2 class="text-xl sm:text-3xl font-black text-emerald-800 mb-1">
-        ¡Tu Carita en la Flor!
+        ¡Tu Carita en la Naturaleza!
       </h2>
       <p class="text-slate-600 text-xs sm:text-base font-semibold mb-3 sm:mb-4">
-        Tómate una foto sonriendo y al final verás tu linda carita en el centro de la flor.
+        Tómate una foto sonriendo y aparecerás en el centro de la flor y en las alitas de la mariposa.
       </p>
 
-      <!-- Contenedor del Visor de Cámara y Previsualización -->
       <div class="relative w-44 h-44 xs:w-52 xs:h-52 sm:w-64 sm:h-64 mx-auto rounded-full overflow-hidden border-4 border-dashed border-emerald-400 bg-sky-50 shadow-inner flex items-center justify-center mb-3 sm:mb-4">
-        
-        <!-- Video en vivo -->
         <video id="selfie-video" autoplay playsinline muted class="w-full h-full object-cover mirror-video hidden"></video>
-        
-        <!-- Foto capturada -->
         <img id="selfie-preview" class="w-full h-full object-cover hidden" alt="Tu foto">
 
-        <!-- Icono cuando la cámara está apagada -->
         <div id="camera-placeholder" class="flex flex-col items-center justify-center p-2 sm:p-4 text-emerald-600">
           <span class="text-4xl sm:text-6xl mb-1 sm:mb-2">😃</span>
           <span class="font-bold text-[11px] sm:text-xs">Presiona "Abrir Cámara"</span>
         </div>
 
-        <!-- Cuenta regresiva superpuesta -->
         <div id="countdown-overlay" class="absolute inset-0 bg-black/40 flex items-center justify-center hidden">
           <span id="countdown-number" class="text-6xl sm:text-8xl font-black text-amber-300 drop-shadow-lg animate-ping">3</span>
         </div>
       </div>
 
-      <!-- Botones de Acción de la Cámara -->
       <div class="flex flex-col gap-2 sm:gap-2.5">
-        <!-- Botón para iniciar cámara -->
         <button id="btn-start-camera" class="w-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-extrabold text-base sm:text-lg py-2.5 sm:py-3 rounded-2xl shadow-md border-b-4 border-emerald-700 transition transform active:scale-95 flex items-center justify-center gap-2">
           <span>📷</span>
           <span>¡Abrir Cámara y Sonreír!</span>
         </button>
 
-        <!-- Botón para disparar foto (se activa tras abrir la cámara) -->
         <button id="btn-take-photo" class="hidden w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-amber-950 font-black text-base sm:text-lg py-2.5 sm:py-3 rounded-2xl shadow-md border-b-4 border-amber-600 transition transform active:scale-95 anim-pulse-ring">
           ✨ ¡Tomar Foto! (3, 2, 1...)
         </button>
 
-        <!-- Input nativo de respaldo para móviles (abre la cámara directamente en Android/iOS) -->
         <input type="file" id="selfie-file-input" accept="image/*" capture="user" class="hidden">
         <button id="btn-native-camera" class="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-bold text-xs sm:text-sm py-2 px-3 rounded-2xl shadow-sm border-b-2 border-indigo-700 transition active:scale-95 flex items-center justify-center gap-1.5">
           <span>📱</span>
           <span>Tomar foto con la app del móvil / Galería</span>
         </button>
 
-        <!-- Botón de Confirmar / Usar Foto -->
         <button id="btn-confirm-photo" class="hidden w-full bg-gradient-to-r from-pink-500 to-rose-500 text-white font-black text-base sm:text-lg py-2.5 sm:py-3 rounded-2xl shadow-md border-b-4 border-pink-700 transition transform active:scale-95">
           🌸 ¡Me encanta, empezar a jugar!
         </button>
 
-        <!-- Botón de Repetir Foto -->
         <button id="btn-retry-photo" class="hidden w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm border-2 border-slate-300 transition">
           🔄 Tomar otra foto
         </button>
 
-        <!-- Saltar foto -->
         <button id="btn-skip-photo" class="text-slate-500 hover:text-slate-700 text-xs sm:text-sm font-bold underline mt-1 py-1">
           O jugar con carita sonriente 🌼
         </button>
@@ -707,10 +905,10 @@
     </div>
   </div>
 
-  <!-- Modal de celebración (sin alert) -->
+  <!-- MODAL DE CELEBRACIÓN DE PASO COMPLETADO -->
   <div id="celebration-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4 hidden">
     <div class="bg-white rounded-3xl p-5 sm:p-7 max-w-sm w-full text-center border-4 border-amber-400 shadow-2xl anim-pop">
-      <div class="text-5xl sm:text-6xl mb-2">🎉🌸✨</div>
+      <div id="celebration-emoji-badge" class="text-5xl sm:text-6xl mb-2">🎉🌸✨</div>
       <h3 class="text-xl sm:text-2xl font-black text-emerald-900 mb-2">¡Felicitaciones!</h3>
       <p id="celebration-msg" class="text-slate-700 text-sm sm:text-base font-bold mb-5 leading-snug">
         ¡Tu plantita floreció hermosa con tu carita en el centro!
@@ -727,7 +925,7 @@
       <div class="inline-flex items-center gap-2 bg-emerald-100 text-emerald-900 font-extrabold px-3 py-1 rounded-full text-xs sm:text-sm mb-2">
         <span>🌟</span> <span>¡Ordenaste Todo Perfecto!</span> <span>🌟</span>
       </div>
-      <h3 class="text-xl sm:text-2xl font-black text-emerald-950 mb-1">
+      <h3 id="cycle-modal-title" class="text-xl sm:text-2xl font-black text-emerald-950 mb-1">
         ¡El Maravilloso Ciclo de la Vida!
       </h3>
       <p class="text-slate-600 text-xs sm:text-sm font-medium mb-3">
@@ -736,7 +934,6 @@
 
       <!-- VISOR DEL CICLO CIRCULAR ANIMADO (ESTILO ICONO) ADAPTABLE -->
       <div class="relative w-52 h-52 xs:w-60 xs:h-60 sm:w-80 sm:h-80 mx-auto my-1.5 sm:my-2 flex items-center justify-center">
-        <!-- Anillo rotatorio de flechas con animación continua -->
         <svg class="absolute inset-0 w-full h-full anim-cycle-spin pointer-events-none" viewBox="0 0 300 300">
           <defs>
             <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto">
@@ -750,36 +947,35 @@
           <path d="M 40 150 A 110 110 0 0 1 150 40" fill="none" stroke="#10B981" stroke-width="6" stroke-linecap="round" marker-end="url(#arrowhead)"/>
         </svg>
 
-        <!-- Sol sonriente radiante en el centro -->
         <div class="absolute w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-gradient-to-tr from-amber-400 to-yellow-300 border-2 sm:border-4 border-amber-300 shadow-lg flex items-center justify-center anim-sun z-10">
           <span class="text-2xl sm:text-4xl">☀️</span>
         </div>
 
-        <!-- 1. SEMILLA (Abajo) -->
+        <!-- 1. ETAPA 1 (Abajo) -->
         <div class="absolute bottom-0.5 sm:bottom-1 left-1/2 -translate-x-1/2 bg-white/95 rounded-xl sm:rounded-2xl p-1 sm:p-2 border border-amber-400 shadow-md flex flex-col items-center z-20 scale-90 sm:scale-100">
-          <span class="text-xl sm:text-3xl">🌰</span>
-          <span class="text-[9px] sm:text-xs font-black text-amber-900">1. Semilla</span>
+          <span id="cycle-node-1-icon" class="text-xl sm:text-3xl">🌰</span>
+          <span id="cycle-node-1-text" class="text-[9px] sm:text-xs font-black text-amber-900">1. Semilla</span>
         </div>
 
-        <!-- 2. BROTE (Derecha) -->
+        <!-- 2. ETAPA 2 (Derecha) -->
         <div class="absolute right-0 sm:right-1 top-1/2 -translate-y-1/2 bg-white/95 rounded-xl sm:rounded-2xl p-1 sm:p-2 border border-emerald-400 shadow-md flex flex-col items-center z-20 scale-90 sm:scale-100">
-          <span class="text-xl sm:text-3xl">🌱</span>
-          <span class="text-[9px] sm:text-xs font-black text-emerald-900">2. Brote</span>
+          <span id="cycle-node-2-icon" class="text-xl sm:text-3xl">🌱</span>
+          <span id="cycle-node-2-text" class="text-[9px] sm:text-xs font-black text-emerald-900">2. Brote</span>
         </div>
 
-        <!-- 3. PLANTA CON HOJAS (Arriba) -->
+        <!-- 3. ETAPA 3 (Arriba) -->
         <div class="absolute top-0.5 sm:top-1 left-1/2 -translate-x-1/2 bg-white/95 rounded-xl sm:rounded-2xl p-1 sm:p-2 border border-green-500 shadow-md flex flex-col items-center z-20 scale-90 sm:scale-100">
-          <span class="text-xl sm:text-3xl">🌿</span>
-          <span class="text-[9px] sm:text-xs font-black text-green-900">3. Planta</span>
+          <span id="cycle-node-3-icon" class="text-xl sm:text-3xl">🌿</span>
+          <span id="cycle-node-3-text" class="text-[9px] sm:text-xs font-black text-green-900">3. Planta</span>
         </div>
 
-        <!-- 4. FLOR CON LA CARITA DEL NIÑO (Izquierda) -->
+        <!-- 4. ETAPA 4 (Izquierda) -->
         <div class="absolute left-0 sm:left-1 top-1/2 -translate-y-1/2 bg-white/95 rounded-xl sm:rounded-2xl p-1 sm:p-2 border border-rose-400 shadow-md flex flex-col items-center z-20 scale-90 sm:scale-100">
           <div class="relative w-7 h-7 sm:w-10 sm:h-10 rounded-full overflow-hidden border-2 border-rose-400 bg-rose-50 flex items-center justify-center">
             <img id="cycle-modal-child-photo" class="w-full h-full object-cover hidden" alt="Tu foto">
             <span id="cycle-modal-flower-face" class="text-lg sm:text-2xl">🌸</span>
           </div>
-          <span class="text-[9px] sm:text-xs font-black text-rose-900">4. ¡Flor!</span>
+          <span id="cycle-node-4-text" class="text-[9px] sm:text-xs font-black text-rose-900">4. ¡Flor!</span>
         </div>
       </div>
 
@@ -788,14 +984,13 @@
           🎉 ¡Qué lindo!
         </button>
         <button id="btn-goto-grow" class="bg-amber-400 hover:bg-amber-500 text-amber-950 font-black text-xs sm:text-sm px-3 sm:px-4 py-2.5 rounded-2xl border-b-4 border-amber-600 transition active:scale-95">
-          🌻 Cuidar otra plantita
+          ✨ Seguir jugando
         </button>
       </div>
     </div>
   </div>
 
   <script>
-    /* Sintetizador de sonido infantil con Web Audio API (Sin archivos externos) */
     class BabyAudio {
       constructor() {
         this.ctx = null;
@@ -970,9 +1165,736 @@
       } else {
         utterance.lang = 'es-419';
       }
-      utterance.pitch = 1.25; // Más expresiva y alegre para niños
-      utterance.rate = 1.02;  // Ritmo más dinámico y natural
+      utterance.pitch = 1.22;
+      utterance.rate = 1.02;
       window.speechSynthesis.speak(utterance);
+    }
+
+    let currentCategory = 'plant'; // 'plant' o 'butterfly'
+    let plantGrowthStage = 0;
+    let butterflyGrowthStage = 0;
+
+    const categoriesConfig = {
+      plant: {
+        title: "¡Hagamos Crecer la Plantita! 🌱",
+        tabGrowIcon: "🌻",
+        tabGrowText: "1. Cuidar Planta",
+        sequenceTitle: "¡Ordena la Historia de la Plantita! 📖",
+        toolsTitle: "¿Qué necesita la planta?",
+        tools: [
+          { type: 'seed', name: 'Semillita', step: 'Paso 1', icon: '🌰', grad: 'from-amber-100 to-amber-200 border-amber-400 text-amber-950 text-amber-800' },
+          { type: 'water', name: 'Agüita', step: 'Paso 2', icon: '💧', grad: 'from-sky-100 to-blue-200 border-blue-400 text-blue-950 text-blue-800' },
+          { type: 'sun', name: 'Sol y calor', step: 'Paso 3', icon: '☀️', grad: 'from-yellow-100 to-amber-200 border-amber-400 text-amber-950 text-amber-800' },
+          { type: 'love', name: '¡Mucho Amor!', step: 'Paso 4', icon: '💖', grad: 'from-pink-100 to-rose-200 border-rose-400 text-rose-950 text-rose-800' }
+        ],
+        stages: [
+          {
+            stage: 0,
+            title: "Maceta lista: Falta sembrar 🌱",
+            instruction: "¡Arrastra o toca la Semillita y ponla en la tierra!",
+            neededTool: "seed",
+            speech: "¡Hola amiguito! Para comenzar, toma la semillita y ponla en la tierra de la maceta."
+          },
+          {
+            stage: 1,
+            title: "Semillita sembrada 🌰",
+            instruction: "¡Bien hecho! Ahora dale Agüita fresca para que despierte 💧",
+            neededTool: "water",
+            speech: "¡Muy bien! Ahora dale un poquito de agua fresca para que pueda despertar."
+          },
+          {
+            stage: 2,
+            title: "¡Nació un lindo brote! 🌿",
+            instruction: "¡Qué lindo! Ahora dale el calor y la luz del Sol ☀️",
+            neededTool: "sun",
+            speech: "¡Mira, nació un brote verde! Ahora necesita los rayitos cálidos del sol."
+          },
+          {
+            stage: 3,
+            title: "La plantita ya tiene hojas verdes 🍃",
+            instruction: "¡Casi lista! Dale mucho Amor y caricias para florecer 💖",
+            neededTool: "love",
+            speech: "¡Qué grande está! Ahora dale mucho cariño para que abra su hermosa flor."
+          },
+          {
+            stage: 4,
+            title: "¡Hermosa flor radiante! 🌸✨",
+            instruction: "¡Lo lograste! Cuidaste tu planta y creció feliz.",
+            neededTool: null,
+            speech: "¡Felicidades! Cuidaste tu plantita con amor y ahora tenemos una flor maravillosa. ¡Mira tu linda carita en el centro de la flor!"
+          }
+        ],
+        sequenceData: [
+          {
+            id: 1,
+            title: "1. Semillita",
+            desc: "Se siembra en la tierra",
+            spokenText: "¡La semillita! Se siembra en la tierra para empezar.",
+            svg: `<svg class="w-14 h-14 sm:w-16 sm:h-16 mx-auto" viewBox="0 0 60 60"><ellipse cx="30" cy="45" rx="25" ry="10" fill="#582C0C"/><ellipse cx="30" cy="38" rx="7" ry="9" fill="#854D0E" transform="rotate(-10 30 38)"/><circle cx="28" cy="36" r="1.5" fill="#FEF08A"/></svg>`
+          },
+          {
+            id: 2,
+            title: "2. Brote tierno",
+            desc: "Nace con agua y sol",
+            spokenText: "¡El brote tierno! Nace cuando le damos agüita y sol.",
+            svg: `<svg class="w-14 h-14 sm:w-16 sm:h-16 mx-auto" viewBox="0 0 60 60"><ellipse cx="30" cy="48" rx="25" ry="8" fill="#582C0C"/><path d="M30 45 Q29 30 30 20" stroke="#22C55E" stroke-width="4"/><path d="M30 22 C22 17 20 5 28 8 Z" fill="#4ADE80"/><path d="M30 22 C38 17 40 5 32 8 Z" fill="#22C55E"/></svg>`
+          },
+          {
+            id: 3,
+            title: "3. Planta con hojas",
+            desc: "Crece alta y verde",
+            spokenText: "¡La planta con hojitas! Crece alta, fuerte y verde.",
+            svg: `<svg class="w-14 h-14 sm:w-16 sm:h-16 mx-auto" viewBox="0 0 60 60"><ellipse cx="30" cy="50" rx="25" ry="7" fill="#582C0C"/><path d="M30 48 Q28 25 30 12" stroke="#16A34A" stroke-width="5"/><path d="M29 32 C12 28 8 16 18 19 Z" fill="#22C55E"/><path d="M31 24 C48 20 52 8 42 11 Z" fill="#4ADE80"/></svg>`
+          },
+          {
+            id: 4,
+            title: "4. Flor hermosa",
+            desc: "Abre sus pétalos",
+            spokenText: "¡La flor hermosa! Abre sus pétalos brillantes al final de la historia.",
+            svg: `<svg class="w-14 h-14 sm:w-16 sm:h-16 mx-auto" viewBox="0 0 60 60"><path d="M30 50 Q28 35 30 25" stroke="#15803D" stroke-width="5"/><circle cx="30" cy="18" r="8" fill="#F43F5E"/><circle cx="23" cy="18" r="6" fill="#FB7185"/><circle cx="37" cy="18" r="6" fill="#FB7185"/><circle cx="30" cy="11" r="6" fill="#F43F5E"/><circle cx="30" cy="25" r="6" fill="#F43F5E"/><circle cx="30" cy="18" r="7" fill="#FBBF24"/><circle cx="28" cy="17" r="1" fill="#78350F"/><circle cx="32" cy="17" r="1" fill="#78350F"/></svg>`
+          }
+        ],
+        cycleNodes: [
+          { icon: '🌰', text: '1. Semilla' },
+          { icon: '🌱', text: '2. Brote' },
+          { icon: '🌿', text: '3. Planta' },
+          { icon: '🌸', text: '4. ¡Flor!' }
+        ]
+      },
+      butterfly: {
+        title: "¡El Mágico Ciclo de la Mariposa! 🦋",
+        tabGrowIcon: "🐛",
+        tabGrowText: "1. Criar Mariposa",
+        sequenceTitle: "¡Ordena la Historia de la Mariposa! 📖",
+        toolsTitle: "¿Qué necesita la mariposa?",
+        tools: [
+          { type: 'bf_egg', name: 'Huevito', step: 'Paso 1', icon: '🥚', grad: 'from-amber-100 to-amber-200 border-amber-400 text-amber-950 text-amber-800' },
+          { type: 'bf_leaf', name: 'Hojitas verdes', step: 'Paso 2', icon: '🍃', grad: 'from-green-100 to-emerald-200 border-emerald-400 text-emerald-950 text-emerald-800' },
+          { type: 'bf_cocoon', name: 'Capullo de seda', step: 'Paso 3', icon: '🥥', grad: 'from-yellow-100 to-emerald-200 border-emerald-400 text-emerald-950 text-emerald-800' },
+          { type: 'bf_love', name: '¡Mucho Amor!', step: 'Paso 4', icon: '💖', grad: 'from-pink-100 to-purple-200 border-purple-400 text-purple-950 text-purple-800' }
+        ],
+        stages: [
+          {
+            stage: 0,
+            title: "Hoja lista: Falta el huevito 🍃",
+            instruction: "¡Arrastra o toca el Huevito perlado sobre la hoja verde!",
+            neededTool: "bf_egg",
+            speech: "¡Hola amiguito! Para comenzar, coloca el huevito perlado sobre la hoja verde."
+          },
+          {
+            stage: 1,
+            title: "Huevito perlado descansando 🥚",
+            instruction: "¡Nacerá pronto! Dale Hojitas verdes para alimentar a la oruga 🍃",
+            neededTool: "bf_leaf",
+            speech: "¡Bien hecho! Ahora dale hojitas frescas para que la oruga coma y crezca fuerte."
+          },
+          {
+            stage: 2,
+            title: "¡Oruga comelona y feliz! 🐛",
+            instruction: "¡Creció gordita! Dale seda para tejer su Capullo o Crisálida 🥥",
+            neededTool: "bf_cocoon",
+            speech: "¡Mira qué oruga tan alegre! Ahora necesita su capullo de seda para descansar."
+          },
+          {
+            stage: 3,
+            title: "Crisálida mágica durmiendo 💤",
+            instruction: "¡Ocurre la metamorfosis! Dale mucho Amor para abrir sus alas 💖",
+            neededTool: "bf_love",
+            speech: "¡Se está transformando! Dale mucho amor para que abra sus alas de colores."
+          },
+          {
+            stage: 4,
+            title: "¡Mariposa hermosa y libre! 🦋✨",
+            instruction: "¡Extraordinario! Creaste una mariposa mágica con tus propias alas.",
+            neededTool: null,
+            speech: "¡Felicidades! Se ha transformado en una mariposa majestuosa y tú estás en el centro volando libre."
+          }
+        ],
+        sequenceData: [
+          {
+            id: 1,
+            title: "1. Huevito perlado",
+            desc: "Puesto en la hoja verde",
+            spokenText: "¡El huevito perlado! La mamá mariposa lo pone con amor sobre la hoja.",
+            svg: `<svg class="w-14 h-14 sm:w-16 sm:h-16 mx-auto" viewBox="0 0 60 60"><ellipse cx="30" cy="40" rx="22" ry="14" fill="#16A34A"/><path d="M30 26 Q30 40 30 54" stroke="#15803D" stroke-width="2"/><ellipse cx="30" cy="30" rx="9" ry="12" fill="#FEF08A" stroke="#EAB308" stroke-width="2.5"/><circle cx="27" cy="27" r="1.5" fill="#713F12"/><circle cx="33" cy="27" r="1.5" fill="#713F12"/><path d="M28 32 Q30 34 32 32" stroke="#713F12" stroke-width="1.2" fill="none"/><circle cx="22" cy="22" r="2" fill="#FBBF24"/></svg>`
+          },
+          {
+            id: 2,
+            title: "2. Oruga comelona",
+            desc: "Come hojitas frescas",
+            spokenText: "¡La oruga comelona! Nace del huevito y come muchas hojitas verdes para crecer fuerte.",
+            svg: `<svg class="w-14 h-14 sm:w-16 sm:h-16 mx-auto" viewBox="0 0 60 60"><ellipse cx="30" cy="45" rx="24" ry="9" fill="#16A34A"/><circle cx="16" cy="34" r="6" fill="#34D399" stroke="#059669" stroke-width="1.5"/><circle cx="25" cy="31" r="7" fill="#10B981" stroke="#047857" stroke-width="1.5"/><circle cx="34" cy="29" r="7.5" fill="#4ADE80" stroke="#16A34A" stroke-width="1.5"/><circle cx="43" cy="27" r="8.5" fill="#86EFAC" stroke="#15803D" stroke-width="1.8"/><circle cx="41" cy="25" r="1.8" fill="#064E3B"/><circle cx="46" cy="25" r="1.8" fill="#064E3B"/><path d="M41 29 Q44 32 47 29" stroke="#064E3B" stroke-width="1.2" fill="#F43F5E"/><path d="M42 19 L40 15 M46 19 L48 15" stroke="#15803D" stroke-width="1.5" stroke-linecap="round"/></svg>`
+          },
+          {
+            id: 3,
+            title: "3. Crisálida mágica",
+            desc: "Duerme en su capullo",
+            spokenText: "¡La crisálida mágica! La oruga se resguarda en su capullo dorado mientras se transforma.",
+            svg: `<svg class="w-14 h-14 sm:w-16 sm:h-16 mx-auto" viewBox="0 0 60 60"><path d="M10 16 Q30 14 50 18" stroke="#854D0E" stroke-width="4" stroke-linecap="round"/><line x1="30" y1="16" x2="30" y2="24" stroke="#FDE047" stroke-width="3" stroke-linecap="round"/><path d="M30 24 C18 27 15 42 30 53 C45 42 42 27 30 24 Z" fill="#10B981" stroke="#047857" stroke-width="2.5"/><path d="M22 35 Q30 40 38 35" stroke="#FEF08A" stroke-width="2" fill="none"/><circle cx="28" cy="32" r="1.5" fill="#064E3B"/><circle cx="32" cy="32" r="1.5" fill="#064E3B"/><circle cx="18" cy="26" r="2" fill="#FBBF24"/></svg>`
+          },
+          {
+            id: 4,
+            title: "4. ¡Mariposa hermosa!",
+            desc: "Vuela libre y feliz",
+            spokenText: "¡La mariposa hermosa! Abre sus alas brillantes y vuela por todo el jardín.",
+            svg: `<svg class="w-14 h-14 sm:w-16 sm:h-16 mx-auto" viewBox="0 0 60 60"><ellipse cx="18" cy="25" rx="13" ry="11" fill="#EC4899" stroke="#BE185D" stroke-width="1.5"/><ellipse cx="42" cy="25" rx="13" ry="11" fill="#EC4899" stroke="#BE185D" stroke-width="1.5"/><circle cx="16" cy="24" r="4" fill="#FBBF24"/><circle cx="44" cy="24" r="4" fill="#FBBF24"/><ellipse cx="20" cy="40" rx="9" ry="8" fill="#8B5CF6" stroke="#6D28D9" stroke-width="1.5"/><ellipse cx="40" cy="40" rx="9" ry="8" fill="#8B5CF6" stroke="#6D28D9" stroke-width="1.5"/><ellipse cx="30" cy="33" rx="3.5" ry="16" fill="#581C87"/><circle cx="30" cy="20" r="6" fill="#FDE047"/><circle cx="28" cy="19" r="1.2" fill="#4C1D95"/><circle cx="32" cy="19" r="1.2" fill="#4C1D95"/><path d="M28 22 Q30 24 32 22" stroke="#4C1D95" stroke-width="1" fill="none"/><path d="M28 15 Q24 10 21 12 M32 15 Q36 10 39 12" stroke="#4C1D95" stroke-width="1.5" fill="none"/></svg>`
+          }
+        ],
+        cycleNodes: [
+          { icon: '🥚', text: '1. Huevo' },
+          { icon: '🐛', text: '2. Oruga' },
+          { icon: '🥥', text: '3. Crisálida' },
+          { icon: '🦋', text: '4. Mariposa' }
+        ]
+      }
+    };
+
+    function renderToolsShelf() {
+      const config = categoriesConfig[currentCategory];
+      const shelf = document.getElementById('tools-shelf');
+      shelf.innerHTML = '';
+
+      config.tools.forEach(tool => {
+        const div = document.createElement('div');
+        div.id = `tool-${tool.type}`;
+        div.draggable = true;
+        div.dataset.type = tool.type;
+        div.className = `tool-card bubble-card cursor-grab active:cursor-grabbing bg-gradient-to-r ${tool.grad} border-2 sm:border-4 rounded-xl sm:rounded-2xl p-1.5 sm:p-3 flex items-center gap-1.5 sm:gap-3 opacity-40 pointer-events-none transition-all`;
+        div.innerHTML = `
+          <div class="w-9 h-9 sm:w-14 sm:h-14 bg-white rounded-lg sm:rounded-xl shadow-inner flex items-center justify-center text-lg sm:text-3xl shrink-0">
+            ${tool.icon}
+          </div>
+          <div class="text-left overflow-hidden">
+            <span class="block text-[9px] sm:text-xs font-semibold uppercase opacity-80">${tool.step}</span>
+            <span class="block text-xs sm:text-lg font-bold truncate">${tool.name}</span>
+          </div>
+        `;
+
+        div.addEventListener('dragstart', (e) => {
+          draggedItemType = tool.type;
+          div.classList.add('dragging');
+          e.dataTransfer.setData('text/plain', tool.type);
+        });
+        div.addEventListener('dragend', () => div.classList.remove('dragging'));
+        div.addEventListener('click', () => applyToolToPot(tool.type));
+
+        shelf.appendChild(div);
+      });
+
+      const currentStage = currentCategory === 'plant' ? plantGrowthStage : butterflyGrowthStage;
+      updateStageView(currentStage);
+    }
+
+    function switchCategory(cat) {
+      if (currentCategory === cat) return;
+      currentCategory = cat;
+      sound.playPlop();
+
+      const plantBtn = document.getElementById('cat-plant-btn');
+      const butterflyBtn = document.getElementById('cat-butterfly-btn');
+      const plantSvg = document.getElementById('plant-svg-canvas');
+      const butterflySvg = document.getElementById('butterfly-svg-canvas');
+      const appTitle = document.getElementById('main-app-title');
+      const tabGrowIcon = document.getElementById('tab-grow-icon');
+      const tabGrowText = document.getElementById('tab-grow-text');
+      const toolsTitle = document.getElementById('tools-title');
+      const seqTitle = document.getElementById('sequence-game-title');
+
+      if (cat === 'plant') {
+        plantBtn.className = "flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-lg sm:rounded-xl font-black text-xs xs:text-sm sm:text-base transition bg-gradient-to-r from-emerald-500 to-green-500 text-white shadow-sm";
+        butterflyBtn.className = "flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-lg sm:rounded-xl font-black text-xs xs:text-sm sm:text-base transition text-purple-900 hover:bg-purple-100/60";
+        plantSvg.classList.remove('hidden');
+        butterflySvg.classList.add('hidden');
+      } else {
+        butterflyBtn.className = "flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-lg sm:rounded-xl font-black text-xs xs:text-sm sm:text-base transition bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-sm";
+        plantBtn.className = "flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-4 py-1 sm:py-1.5 rounded-lg sm:rounded-xl font-black text-xs xs:text-sm sm:text-base transition text-emerald-900 hover:bg-emerald-100/60";
+        butterflySvg.classList.remove('hidden');
+        plantSvg.classList.add('hidden');
+      }
+
+      const cfg = categoriesConfig[cat];
+      appTitle.textContent = cfg.title;
+      tabGrowIcon.textContent = cfg.tabGrowIcon;
+      tabGrowText.textContent = cfg.tabGrowText;
+      toolsTitle.textContent = cfg.toolsTitle;
+      seqTitle.textContent = cfg.sequenceTitle;
+
+      renderToolsShelf();
+      renderSequenceGame();
+
+      const stage = cat === 'plant' ? plantGrowthStage : butterflyGrowthStage;
+      speakText(cfg.stages[stage].speech);
+    }
+
+    document.getElementById('cat-plant-btn').addEventListener('click', () => switchCategory('plant'));
+    document.getElementById('cat-butterfly-btn').addEventListener('click', () => switchCategory('butterfly'));
+
+    const instructionText = document.getElementById('instruction-text');
+    const stageTitle = document.getElementById('plant-stage-title');
+    const dropzoneHint = document.getElementById('dropzone-hint');
+
+    function updateStageView(stageNum) {
+      if (currentCategory === 'plant') {
+        plantGrowthStage = stageNum;
+      } else {
+        butterflyGrowthStage = stageNum;
+      }
+
+      const cfg = categoriesConfig[currentCategory];
+      const stageConfig = cfg.stages[stageNum];
+
+      instructionText.textContent = stageConfig.instruction;
+      stageTitle.textContent = stageConfig.title;
+
+      if (currentCategory === 'plant') {
+        ['stage-0-empty', 'stage-1-seed', 'stage-2-sprout', 'stage-3-growing', 'stage-4-flower'].forEach((id, idx) => {
+          const el = document.getElementById(id);
+          if (el) el.classList.toggle('hidden', idx !== stageNum);
+        });
+
+        const plantSvg = document.getElementById('plant-svg-canvas');
+        plantSvg.classList.add('anim-tickle');
+        setTimeout(() => plantSvg.classList.remove('anim-tickle'), 650);
+
+        if (stageNum === 4) {
+          document.getElementById('hint-text').textContent = "¡Misión Cumplida! 🌻";
+          triggerCelebration("¡Tu planta dio una hermosa flor y ahora tú eres el centro!", "🌸✨🎉");
+        }
+      } else {
+        ['bf-stage-0', 'bf-stage-1', 'bf-stage-2', 'bf-stage-3', 'bf-stage-4'].forEach((id, idx) => {
+          const el = document.getElementById(id);
+          if (el) el.classList.toggle('hidden', idx !== stageNum);
+        });
+
+        const butterflySvg = document.getElementById('butterfly-svg-canvas');
+        butterflySvg.classList.add('anim-tickle');
+        setTimeout(() => butterflySvg.classList.remove('anim-tickle'), 650);
+
+        if (stageNum === 4) {
+          document.getElementById('hint-text').textContent = "¡Misión Cumplida! 🦋";
+          triggerCelebration("¡Nació una mariposa mágica y tú vuelas con sus alitas!", "🦋✨💖");
+        }
+      }
+
+      cfg.tools.forEach(tool => {
+        const el = document.getElementById(`tool-${tool.type}`);
+        if (!el) return;
+        if (tool.type === stageConfig.neededTool) {
+          el.classList.remove('opacity-40', 'pointer-events-none');
+          el.classList.add('border-emerald-500', 'anim-bounce-gentle', 'ring-4', 'ring-emerald-300');
+        } else {
+          el.classList.add('opacity-40', 'pointer-events-none');
+          el.classList.remove('border-emerald-500', 'anim-bounce-gentle', 'ring-4', 'ring-emerald-300');
+        }
+      });
+    }
+
+    const potDropzone = document.getElementById('plant-pot-dropzone');
+    let draggedItemType = null;
+
+    potDropzone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      potDropzone.classList.add('drop-active');
+    });
+
+    potDropzone.addEventListener('dragleave', () => {
+      potDropzone.classList.remove('drop-active');
+    });
+
+    potDropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      potDropzone.classList.remove('drop-active');
+      const itemType = e.dataTransfer.getData('text/plain') || draggedItemType;
+      applyToolToPot(itemType);
+    });
+
+    potDropzone.addEventListener('click', () => {
+      const cfg = categoriesConfig[currentCategory];
+      const currentStage = currentCategory === 'plant' ? plantGrowthStage : butterflyGrowthStage;
+      const needed = cfg.stages[currentStage].neededTool;
+
+      const activeSvg = currentCategory === 'plant' 
+        ? document.getElementById('plant-svg-canvas')
+        : document.getElementById('butterfly-svg-canvas');
+
+      activeSvg.classList.add('anim-tickle');
+      setTimeout(() => activeSvg.classList.remove('anim-tickle'), 650);
+
+      sound.playPlop();
+
+      if (currentStage === 4) {
+        speakText(currentCategory === 'plant' 
+          ? "¡Jajaja! ¡Gracias por cuidarme y darme tanto amor!" 
+          : "¡Jajaja! ¡Mira cómo vuelo libre con mis hermosas alas!");
+      } else if (needed) {
+        applyToolToPot(needed);
+      }
+    });
+
+    function applyToolToPot(toolType) {
+      const cfg = categoriesConfig[currentCategory];
+      const currentStage = currentCategory === 'plant' ? plantGrowthStage : butterflyGrowthStage;
+      const expectedTool = cfg.stages[currentStage].neededTool;
+
+      if (toolType === expectedTool) {
+        if (toolType === 'seed' || toolType === 'bf_egg') {
+          sound.playPlop();
+        } else if (toolType === 'water' || toolType === 'bf_leaf') {
+          sound.playWater();
+          const shower = document.getElementById('water-shower');
+          shower.classList.remove('hidden');
+          setTimeout(() => shower.classList.add('hidden'), 1200);
+        } else if (toolType === 'sun' || toolType === 'bf_cocoon') {
+          sound.playSparkle();
+          const glow = document.getElementById('sun-glow');
+          glow.classList.remove('hidden');
+          glow.classList.add('flex');
+          setTimeout(() => {
+            glow.classList.add('hidden');
+            glow.classList.remove('flex');
+          }, 1200);
+        } else if (toolType === 'love' || toolType === 'bf_love') {
+          sound.playFanfare();
+          const love = document.getElementById('love-shower');
+          love.classList.remove('hidden');
+          love.classList.add('flex');
+          setTimeout(() => {
+            love.classList.add('hidden');
+            love.classList.remove('flex');
+          }, 1200);
+        }
+
+        const nextStage = currentStage + 1;
+        updateStageView(nextStage);
+        speakText(cfg.stages[nextStage].speech);
+      } else {
+        sound.playError();
+        potDropzone.classList.add('anim-tickle');
+        setTimeout(() => potDropzone.classList.remove('anim-tickle'), 400);
+        speakText("¡Todavía no, amiguito! Fíjate en la ficha que está brillando.");
+      }
+    }
+
+    let userSequenceSlots = { 1: null, 2: null, 3: null, 4: null };
+
+    const slotAudioPrompts = {
+      plant: {
+        1: "Número uno. ¿Qué va primero en la historia? ¿Quién duerme en la tierra?",
+        2: "Número dos. ¿Qué pasa después? ¿Qué empieza a salir hacia arriba?",
+        3: "Número tres. ¿Cómo sigue creciendo? ¿Qué le sale al tallito?",
+        4: "Número cuatro. ¿Al final de todo qué nace? ¿Qué abre sus pétalos de colores?"
+      },
+      butterfly: {
+        1: "Número uno. ¿Qué pone la mamá mariposa en la hoja verde para comenzar?",
+        2: "Número dos. ¿Qué sale del huevito con mucha hambre para comer hojas?",
+        3: "Número tres. ¿Dónde se resguarda a dormir la oruga mientras se transforma?",
+        4: "Número cuatro. ¿Al final de todo qué hermosa criatura abre sus alas mágicas?"
+      }
+    };
+
+    function renderSequenceGame() {
+      const cfg = categoriesConfig[currentCategory];
+      const tray = document.getElementById('cards-tray');
+      tray.innerHTML = '';
+      userSequenceSlots = { 1: null, 2: null, 3: null, 4: null };
+
+      for (let s = 1; s <= 4; s++) {
+        clearSlotView(s);
+      }
+
+      const shuffled = [...cfg.sequenceData].sort(() => Math.random() - 0.5);
+
+      shuffled.forEach(item => {
+        const card = document.createElement('div');
+        card.id = `seq-card-${item.id}`;
+        card.dataset.id = item.id;
+        card.draggable = true;
+        card.className = "seq-card bg-white p-2 sm:p-3 rounded-xl sm:rounded-2xl border-2 sm:border-4 border-emerald-300 shadow-md cursor-grab active:cursor-grabbing flex flex-col items-center justify-center transition-all hover:scale-105 active:scale-95 min-h-[90px]";
+        card.innerHTML = `
+          <div class="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center">${item.svg}</div>
+          <span class="font-extrabold text-xs sm:text-base text-emerald-950 mt-0.5 sm:mt-1 text-center truncate w-full">${item.title}</span>
+          <span class="text-[10px] sm:text-xs text-slate-500 text-center line-clamp-1">${item.desc}</span>
+          <span class="mt-1 text-[10px] sm:text-xs bg-emerald-100 text-emerald-800 font-bold px-1.5 sm:px-2 py-0.5 rounded-full">🔊 Escuchar</span>
+        `;
+
+        card.addEventListener('dragstart', (e) => {
+          e.dataTransfer.setData('cardId', item.id);
+          card.classList.add('dragging');
+          speakText(item.spokenText);
+        });
+        card.addEventListener('dragend', () => card.classList.remove('dragging'));
+
+        card.addEventListener('click', () => {
+          sound.playPlop();
+          speakText(item.spokenText);
+
+          for (let i = 1; i <= 4; i++) {
+            if (!userSequenceSlots[i]) {
+              setTimeout(() => {
+                placeCardInSlot(item.id, i);
+              }, 400);
+              break;
+            }
+          }
+        });
+
+        tray.appendChild(card);
+      });
+
+      document.querySelectorAll('.sequence-slot').forEach(slot => {
+        const slotNum = parseInt(slot.dataset.slot);
+        slot.classList.add('cursor-pointer', 'hover:shadow-md');
+
+        slot.addEventListener('dragover', (e) => {
+          e.preventDefault();
+          slot.classList.add('scale-105', 'bg-emerald-100');
+        });
+
+        slot.addEventListener('dragleave', () => {
+          slot.classList.remove('scale-105', 'bg-emerald-100');
+        });
+
+        slot.addEventListener('drop', (e) => {
+          e.preventDefault();
+          slot.classList.remove('scale-105', 'bg-emerald-100');
+          const cardId = parseInt(e.dataTransfer.getData('cardId'));
+          if (cardId) placeCardInSlot(cardId, slotNum);
+        });
+
+        slot.addEventListener('click', (e) => {
+          if (e.target.closest('.btn-remove-card')) {
+            e.stopPropagation();
+            returnCardToTray(slotNum);
+            speakText("Quitaste la tarjeta. ¡Puedes elegir otra!");
+            return;
+          }
+
+          sound.playPlop();
+          if (!userSequenceSlots[slotNum]) {
+            speakText(slotAudioPrompts[currentCategory][slotNum]);
+          } else {
+            const cardData = cfg.sequenceData.find(d => d.id === userSequenceSlots[slotNum]);
+            speakText(`En el número ${slotNum} pusiste: ${cardData.spokenText}`);
+          }
+        });
+      });
+    }
+
+    function placeCardInSlot(cardId, slotNum) {
+      const cfg = categoriesConfig[currentCategory];
+
+      for (let s in userSequenceSlots) {
+        if (userSequenceSlots[s] === cardId) {
+          userSequenceSlots[s] = null;
+          clearSlotView(s);
+        }
+      }
+
+      if (userSequenceSlots[slotNum]) {
+        returnCardToTray(slotNum);
+      }
+
+      userSequenceSlots[slotNum] = cardId;
+      const cardEl = document.getElementById(`seq-card-${cardId}`);
+      if (cardEl) cardEl.classList.add('hidden');
+
+      const data = cfg.sequenceData.find(d => d.id === cardId);
+      const slotEl = document.querySelector(`.sequence-slot[data-slot="${slotNum}"]`);
+      
+      slotEl.innerHTML = `
+        <span class="absolute top-1 sm:top-2 left-2 sm:left-3 text-lg sm:text-2xl font-black text-emerald-600">${slotNum}º</span>
+        <button class="btn-remove-card absolute top-1 sm:top-2 right-1 sm:right-2 text-rose-600 font-extrabold text-[10px] sm:text-xs bg-rose-100 hover:bg-rose-200 border border-rose-300 px-1.5 sm:px-2 py-0.5 rounded-full z-10 transition">✕ Quitar</button>
+        <div class="flex flex-col items-center justify-center p-1 sm:p-2 text-center anim-pop pointer-events-none">
+          <div class="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center">${data.svg}</div>
+          <span class="font-extrabold text-xs sm:text-sm text-emerald-900 mt-0.5 sm:mt-1 truncate w-full">${data.title}</span>
+          <span class="text-[10px] sm:text-xs text-slate-500 line-clamp-1">${data.desc}</span>
+        </div>
+      `;
+      sound.playPlop();
+    }
+
+    function returnCardToTray(slotNum) {
+      const cardId = userSequenceSlots[slotNum];
+      if (!cardId) return;
+
+      userSequenceSlots[slotNum] = null;
+      const cardEl = document.getElementById(`seq-card-${cardId}`);
+      if (cardEl) cardEl.classList.remove('hidden');
+
+      clearSlotView(slotNum);
+      sound.playPlop();
+    }
+
+    function clearSlotView(slotNum) {
+      const slotEl = document.querySelector(`.sequence-slot[data-slot="${slotNum}"]`);
+      if (!slotEl) return;
+      const colors = { 1: 'amber', 2: 'sky', 3: 'emerald', 4: 'pink' };
+      const prompts = {
+        plant: { 1: "¿Qué va primero?", 2: "¿Qué pasa después?", 3: "¿Cómo crece?", 4: "¿Al final qué nace?" },
+        butterfly: { 1: "¿Qué se pone primero?", 2: "¿Quién nace a comer?", 3: "¿Dónde se duerme?", 4: "¿Quién vuela al final?" }
+      };
+      const c = colors[slotNum] || 'emerald';
+      const promptText = prompts[currentCategory][slotNum];
+
+      slotEl.innerHTML = `
+        <span class="absolute top-1 sm:top-2 left-2 sm:left-3 text-lg sm:text-2xl font-black text-${c}-500">${slotNum}º</span>
+        <div class="slot-content flex flex-col items-center justify-center h-full w-full pointer-events-none text-center px-1">
+          <span class="text-${c}-600 text-xs sm:text-sm font-bold text-center px-1">${promptText}</span>
+          <span class="text-[10px] sm:text-xs text-emerald-700 bg-emerald-100/90 font-bold px-1.5 sm:px-2 py-0.5 rounded-full mt-1 sm:mt-2">🔊 Escuchar</span>
+        </div>
+      `;
+    }
+
+    document.getElementById('btn-check-sequence').addEventListener('click', () => {
+      const filled = [1, 2, 3, 4].every(num => userSequenceSlots[num] !== null);
+      if (!filled) {
+        sound.playError();
+        speakText("Aún te faltan tarjetas. ¡Coloca una en cada número!");
+        return;
+      }
+
+      const isCorrect = userSequenceSlots[1] === 1 &&
+                        userSequenceSlots[2] === 2 &&
+                        userSequenceSlots[3] === 3 &&
+                        userSequenceSlots[4] === 4;
+
+      if (isCorrect) {
+        sound.playFanfare();
+        triggerCycleCelebration();
+      } else {
+        sound.playError();
+        const hint = currentCategory === 'plant'
+          ? "¡Casi lo logras! Recuerda: primero la semillita, luego el brote, después las hojas y al final la flor."
+          : "¡Casi lo logras! Recuerda: primero el huevito, luego la oruga, después la crisálida y al final la mariposa.";
+        speakText(hint);
+      }
+    });
+
+    function triggerCycleCelebration() {
+      const cfg = categoriesConfig[currentCategory];
+      const cycleModal = document.getElementById('cycle-completed-modal');
+      const cycleTitle = document.getElementById('cycle-modal-title');
+      cycleTitle.textContent = currentCategory === 'plant' 
+        ? "¡El Maravilloso Ciclo de la Planta!"
+        : "¡El Mágico Ciclo de la Mariposa!";
+
+      cfg.cycleNodes.forEach((node, idx) => {
+        const num = idx + 1;
+        const iconEl = document.getElementById(`cycle-node-${num}-icon`);
+        const textEl = document.getElementById(`cycle-node-${num}-text`);
+        if (iconEl) iconEl.textContent = node.icon;
+        if (textEl) textEl.textContent = node.text;
+      });
+
+      cycleModal.classList.remove('hidden');
+
+      confettiParticles = [];
+      const colors = ['#F59E0B', '#10B981', '#EC4899', '#3B82F6', '#8B5CF6', '#EF4444'];
+      for (let i = 0; i < 90; i++) {
+        confettiParticles.push({
+          x: canvas.width / 2,
+          y: canvas.height / 2,
+          vx: (Math.random() - 0.5) * 14,
+          vy: (Math.random() - 0.7) * 16,
+          size: Math.random() * 8 + 6,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rotation: Math.random() * 360,
+          rotSpeed: (Math.random() - 0.5) * 10
+        });
+      }
+      if (!confettiAnimId) runConfetti();
+
+      const congratSpeech = currentCategory === 'plant'
+        ? "¡Extraordinario! Mira cómo gira el ciclo de la planta: la semillita despierta, sale el brote, crece la planta y abre una hermosa flor con tu carita para volver a dar semillitas."
+        : "¡Extraordinario! Mira cómo gira el ciclo de la mariposa: nace del huevito la oruga, se resguarda en su crisálida y vuela una hermosa mariposa con tu carita para volver a poner huevitos.";
+      speakText(congratSpeech);
+    }
+
+    document.getElementById('btn-close-cycle-modal').addEventListener('click', () => {
+      document.getElementById('cycle-completed-modal').classList.add('hidden');
+      sound.playPlop();
+      renderSequenceGame();
+    });
+
+    document.getElementById('btn-goto-grow').addEventListener('click', () => {
+      document.getElementById('cycle-completed-modal').classList.add('hidden');
+      sound.playPlop();
+      document.getElementById('tab-grow').click();
+    });
+
+    document.getElementById('btn-reset-sequence').addEventListener('click', () => {
+      renderSequenceGame();
+      sound.playPlop();
+    });
+
+    const canvas = document.getElementById('confetti-canvas');
+    const ctx = canvas.getContext('2d');
+    let confettiParticles = [];
+    let confettiAnimId = null;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function triggerCelebration(message, emojiBadge) {
+      document.getElementById('celebration-msg').textContent = message;
+      if (emojiBadge) document.getElementById('celebration-emoji-badge').textContent = emojiBadge;
+      document.getElementById('celebration-modal').classList.remove('hidden');
+
+      confettiParticles = [];
+      const colors = ['#F59E0B', '#10B981', '#EC4899', '#3B82F6', '#8B5CF6', '#EF4444'];
+      for (let i = 0; i < 90; i++) {
+        confettiParticles.push({
+          x: canvas.width / 2,
+          y: canvas.height / 2,
+          vx: (Math.random() - 0.5) * 14,
+          vy: (Math.random() - 0.7) * 16,
+          size: Math.random() * 8 + 6,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rotation: Math.random() * 360,
+          rotSpeed: (Math.random() - 0.5) * 10
+        });
+      }
+
+      if (!confettiAnimId) runConfetti();
+    }
+
+    function runConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      confettiParticles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.3;
+        p.rotation += p.rotSpeed;
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rotation * Math.PI) / 180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+        ctx.restore();
+      });
+
+      confettiParticles = confettiParticles.filter(p => p.y < canvas.height + 50);
+
+      if (confettiParticles.length > 0) {
+        confettiAnimId = requestAnimationFrame(runConfetti);
+      } else {
+        confettiAnimId = null;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+
+    const btnCloseModal = document.getElementById('btn-close-modal');
+    if (btnCloseModal) {
+      btnCloseModal.addEventListener('click', () => {
+        const modal = document.getElementById('celebration-modal');
+        if (modal) modal.classList.add('hidden');
+        sound.playPlop();
+      });
     }
 
     let userSelfieDataUrl = null;
@@ -997,16 +1919,18 @@
     const svgChildPhoto = document.getElementById('svg-child-photo');
     const flowerChildPhotoContainer = document.getElementById('flower-child-photo-container');
     const flowerDefaultFace = document.getElementById('flower-default-face');
+    const bfSvgChildPhoto = document.getElementById('bf-svg-child-photo');
+    const bfChildPhotoContainer = document.getElementById('bf-child-photo-container');
+    const bfDefaultFace = document.getElementById('bf-default-face');
+
     const headerAvatarBadge = document.getElementById('header-avatar-badge');
     const headerAvatarImg = document.getElementById('header-avatar-img');
     const cycleModalChildPhoto = document.getElementById('cycle-modal-child-photo');
     const cycleModalFlowerFace = document.getElementById('cycle-modal-flower-face');
-    const cycleCompletedModal = document.getElementById('cycle-completed-modal');
 
     async function startCamera() {
       try {
         sound.init();
-
         if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
           throw new Error("HTTPS_REQUIRED");
         }
@@ -1038,7 +1962,6 @@
       }
     }
 
-    /* Soporte para abrir la app de cámara nativa del teléfono */
     btnNativeCamera.addEventListener('click', () => {
       sound.playPlop();
       selfieFileInput.click();
@@ -1120,7 +2043,6 @@
       canvas.height = size;
       const ctx = canvas.getContext('2d');
 
-      // Efecto espejo horizontal para foto natural
       ctx.translate(size, 0);
       ctx.scale(-1, 1);
 
@@ -1130,8 +2052,6 @@
       ctx.drawImage(selfieVideo, sx, sy, size, size, 0, 0, size, size);
 
       userSelfieDataUrl = canvas.toDataURL('image/png');
-
-      // Mostrar preview
       selfiePreview.src = userSelfieDataUrl;
       selfiePreview.classList.remove('hidden');
       selfieVideo.classList.add('hidden');
@@ -1149,6 +2069,10 @@
         flowerChildPhotoContainer.classList.remove('hidden');
         flowerDefaultFace.classList.add('hidden');
 
+        bfSvgChildPhoto.setAttribute('href', dataUrl);
+        bfChildPhotoContainer.classList.remove('hidden');
+        bfDefaultFace.classList.add('hidden');
+
         headerAvatarImg.src = dataUrl;
         headerAvatarBadge.classList.remove('hidden');
         headerAvatarBadge.classList.add('flex');
@@ -1161,6 +2085,9 @@
       } else {
         flowerChildPhotoContainer.classList.add('hidden');
         flowerDefaultFace.classList.remove('hidden');
+        bfChildPhotoContainer.classList.add('hidden');
+        bfDefaultFace.classList.remove('hidden');
+
         headerAvatarBadge.classList.add('hidden');
         headerAvatarBadge.classList.remove('flex');
 
@@ -1174,7 +2101,10 @@
     function closeCameraModal() {
       stopCamera();
       cameraModal.classList.add('hidden');
-      speakText("¡Listo! Arrastra la semillita a la tierra para comenzar.");
+      const startSpeech = currentCategory === 'plant'
+        ? "¡Listo! Arrastra la semillita a la tierra para comenzar."
+        : "¡Listo! Arrastra el huevito a la hoja verde para comenzar.";
+      speakText(startSpeech);
     }
 
     btnStartCamera.addEventListener('click', startCamera);
@@ -1184,9 +2114,7 @@
       applyUserPhoto(userSelfieDataUrl);
       closeCameraModal();
     });
-    btnRetryPhoto.addEventListener('click', () => {
-      startCamera();
-    });
+    btnRetryPhoto.addEventListener('click', startCamera);
     btnSkipPhoto.addEventListener('click', () => {
       sound.playPlop();
       applyUserPhoto(null);
@@ -1203,512 +2131,6 @@
       cameraPlaceholder.classList.remove('hidden');
     });
 
-    let plantGrowthStage = 0;
-
-    const stagesConfig = [
-      {
-        stage: 0,
-        title: "Maceta lista: Falta sembrar 🌱",
-        instruction: "¡Arrastra o toca la Semillita y ponla en la tierra!",
-        neededTool: "seed",
-        speech: "¡Hola amiguito! Para comenzar, toma la semillita y ponla en la tierra de la maceta."
-      },
-      {
-        stage: 1,
-        title: "Semillita sembrada 🌰",
-        instruction: "¡Bien hecho! Ahora dale Agüita fresca para que despierte 💧",
-        neededTool: "water",
-        speech: "¡Muy bien! Ahora dale un poquito de agua fresca para que pueda despertar."
-      },
-      {
-        stage: 2,
-        title: "¡Nació un lindo brote! 🌿",
-        instruction: "¡Qué lindo! Ahora dale el calor y la luz del Sol ☀️",
-        neededTool: "sun",
-        speech: "¡Mira, nació un brote verde! Ahora necesita los rayitos cálidos del sol."
-      },
-      {
-        stage: 3,
-        title: "La plantita ya tiene hojas verdes 🍃",
-        instruction: "¡Casi lista! Dale mucho Amor y caricias para florecer 💖",
-        neededTool: "love",
-        speech: "¡Qué grande está! Ahora dale mucho cariño para que abra su hermosa flor."
-      },
-      {
-        stage: 4,
-        title: "¡Hermosa flor radiante! 🌸✨",
-        instruction: "¡Lo lograste! Cuidaste tu planta y creció feliz.",
-        neededTool: null,
-        speech: "¡Felicidades! Cuidaste tu plantita con amor y ahora tenemos una flor maravillosa. ¡Mira tu linda carita en el centro de la flor!"
-      }
-    ];
-
-    const instructionText = document.getElementById('instruction-text');
-    const stageTitle = document.getElementById('plant-stage-title');
-    const dropzoneHint = document.getElementById('dropzone-hint');
-
-    function updatePlantStage(stageNum) {
-      plantGrowthStage = stageNum;
-      const config = stagesConfig[stageNum];
-
-      instructionText.textContent = config.instruction;
-      stageTitle.textContent = config.title;
-
-      document.getElementById('stage-0-empty').classList.add('hidden');
-      document.getElementById('stage-1-seed').classList.add('hidden');
-      document.getElementById('stage-2-sprout').classList.add('hidden');
-      document.getElementById('stage-3-growing').classList.add('hidden');
-      document.getElementById('stage-4-flower').classList.add('hidden');
-
-      const plantSvg = document.getElementById('plant-svg-canvas');
-      plantSvg.classList.add('anim-tickle');
-      setTimeout(() => plantSvg.classList.remove('anim-tickle'), 650);
-
-      if (stageNum === 0) document.getElementById('stage-0-empty').classList.remove('hidden');
-      if (stageNum === 1) document.getElementById('stage-1-seed').classList.remove('hidden');
-      if (stageNum === 2) document.getElementById('stage-2-sprout').classList.remove('hidden');
-      if (stageNum === 3) document.getElementById('stage-3-growing').classList.remove('hidden');
-      if (stageNum === 4) {
-        document.getElementById('stage-4-flower').classList.remove('hidden');
-        document.getElementById('hint-text').textContent = "¡Misión Cumplida! 🌻";
-        triggerCelebration("¡Tu planta dio una flor preciosa y ahora tú eres el centro!");
-      }
-
-      const tools = ['seed', 'water', 'sun', 'love'];
-      tools.forEach(tool => {
-        const el = document.getElementById(`tool-${tool}`);
-        if (tool === config.neededTool) {
-          el.classList.remove('opacity-40', 'pointer-events-none');
-          el.classList.add('border-emerald-500', 'anim-bounce-gentle', 'ring-4', 'ring-emerald-300');
-        } else {
-          el.classList.add('opacity-40', 'pointer-events-none');
-          el.classList.remove('border-emerald-500', 'anim-bounce-gentle', 'ring-4', 'ring-emerald-300');
-        }
-      });
-    }
-
-    const potDropzone = document.getElementById('plant-pot-dropzone');
-    const toolCards = document.querySelectorAll('.tool-card');
-    let draggedItemType = null;
-
-    toolCards.forEach(card => {
-      card.addEventListener('dragstart', (e) => {
-        draggedItemType = card.dataset.type;
-        card.classList.add('dragging');
-        e.dataTransfer.setData('text/plain', draggedItemType);
-      });
-
-      card.addEventListener('dragend', () => card.classList.remove('dragging'));
-
-      card.addEventListener('click', () => {
-        const itemType = card.dataset.type;
-        applyToolToPot(itemType);
-      });
-    });
-
-    potDropzone.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      potDropzone.classList.add('drop-active');
-    });
-
-    potDropzone.addEventListener('dragleave', () => {
-      potDropzone.classList.remove('drop-active');
-    });
-
-    potDropzone.addEventListener('drop', (e) => {
-      e.preventDefault();
-      potDropzone.classList.remove('drop-active');
-      const itemType = e.dataTransfer.getData('text/plain') || draggedItemType;
-      applyToolToPot(itemType);
-    });
-
-    potDropzone.addEventListener('click', () => {
-      const currentNeeded = stagesConfig[plantGrowthStage].neededTool;
-      const plantSvg = document.getElementById('plant-svg-canvas');
-      plantSvg.classList.add('anim-tickle');
-      setTimeout(() => plantSvg.classList.remove('anim-tickle'), 650);
-
-      sound.playPlop();
-
-      if (plantGrowthStage === 4) {
-        speakText("¡Jajaja! ¡Gracias por cuidarme y darme tanto amor!");
-      } else if (currentNeeded) {
-        applyToolToPot(currentNeeded);
-      }
-    });
-
-    function applyToolToPot(toolType) {
-      const expectedTool = stagesConfig[plantGrowthStage].neededTool;
-
-      if (toolType === expectedTool) {
-        if (toolType === 'seed') {
-          sound.playPlop();
-        } else if (toolType === 'water') {
-          sound.playWater();
-          const shower = document.getElementById('water-shower');
-          shower.classList.remove('hidden');
-          setTimeout(() => shower.classList.add('hidden'), 1200);
-        } else if (toolType === 'sun') {
-          sound.playSparkle();
-          const glow = document.getElementById('sun-glow');
-          glow.classList.remove('hidden');
-          glow.classList.add('flex');
-          setTimeout(() => {
-            glow.classList.add('hidden');
-            glow.classList.remove('flex');
-          }, 1200);
-        } else if (toolType === 'love') {
-          sound.playFanfare();
-          const love = document.getElementById('love-shower');
-          love.classList.remove('hidden');
-          love.classList.add('flex');
-          setTimeout(() => {
-            love.classList.add('hidden');
-            love.classList.remove('flex');
-          }, 1200);
-        }
-
-        updatePlantStage(plantGrowthStage + 1);
-        speakText(stagesConfig[plantGrowthStage].speech);
-      } else {
-        sound.playError();
-        potDropzone.classList.add('anim-tickle');
-        setTimeout(() => potDropzone.classList.remove('anim-tickle'), 400);
-        speakText("¡Todavía no, amiguito! Fíjate en la ficha que está brillando.");
-      }
-    }
-
-    const sequencePuzzleData = [
-      {
-        id: 1,
-        title: "1. Semillita",
-        desc: "Se siembra en la tierra",
-        spokenText: "¡La semillita! Se siembra en la tierra para empezar.",
-        svg: `<svg class="w-16 h-16 mx-auto" viewBox="0 0 60 60"><ellipse cx="30" cy="45" rx="25" ry="10" fill="#582C0C"/><ellipse cx="30" cy="38" rx="7" ry="9" fill="#854D0E" transform="rotate(-10 30 38)"/><circle cx="28" cy="36" r="1.5" fill="#FEF08A"/></svg>`
-      },
-      {
-        id: 2,
-        title: "2. Brote tierno",
-        desc: "Nace con agua y sol",
-        spokenText: "¡El brote tierno! Nace cuando le damos agüita y sol.",
-        svg: `<svg class="w-16 h-16 mx-auto" viewBox="0 0 60 60"><ellipse cx="30" cy="48" rx="25" ry="8" fill="#582C0C"/><path d="M30 45 Q29 30 30 20" stroke="#22C55E" stroke-width="4"/><path d="M30 22 C22 17 20 5 28 8 Z" fill="#4ADE80"/><path d="M30 22 C38 17 40 5 32 8 Z" fill="#22C55E"/></svg>`
-      },
-      {
-        id: 3,
-        title: "3. Planta con hojas",
-        desc: "Crece alta y verde",
-        spokenText: "¡La planta con hojitas! Crece alta, fuerte y verde.",
-        svg: `<svg class="w-16 h-16 mx-auto" viewBox="0 0 60 60"><ellipse cx="30" cy="50" rx="25" ry="7" fill="#582C0C"/><path d="M30 48 Q28 25 30 12" stroke="#16A34A" stroke-width="5"/><path d="M29 32 C12 28 8 16 18 19 Z" fill="#22C55E"/><path d="M31 24 C48 20 52 8 42 11 Z" fill="#4ADE80"/></svg>`
-      },
-      {
-        id: 4,
-        title: "4. Flor hermosa",
-        desc: "Abre sus pétalos",
-        spokenText: "¡La flor hermosa! Abre sus pétalos brillantes al final de la historia.",
-        svg: `<svg class="w-16 h-16 mx-auto" viewBox="0 0 60 60"><path d="M30 50 Q28 35 30 25" stroke="#15803D" stroke-width="5"/><circle cx="30" cy="18" r="8" fill="#F43F5E"/><circle cx="23" cy="18" r="6" fill="#FB7185"/><circle cx="37" cy="18" r="6" fill="#FB7185"/><circle cx="30" cy="11" r="6" fill="#F43F5E"/><circle cx="30" cy="25" r="6" fill="#F43F5E"/><circle cx="30" cy="18" r="7" fill="#FBBF24"/><circle cx="28" cy="17" r="1" fill="#78350F"/><circle cx="32" cy="17" r="1" fill="#78350F"/></svg>`
-      }
-    ];
-
-    /* Mensajes hablados para cada casilla numerada */
-    const slotAudioPrompts = {
-      1: "Número uno. ¿Qué va primero en la historia? ¿Quién duerme en la tierra?",
-      2: "Número dos. ¿Qué pasa después? ¿Qué empieza a salir hacia arriba?",
-      3: "Número tres. ¿Cómo sigue creciendo? ¿Qué le sale al tallito?",
-      4: "Número cuatro. ¿Al final de todo qué nace? ¿Qué abre sus pétalos de colores?"
-    };
-
-    let userSequenceSlots = { 1: null, 2: null, 3: null, 4: null };
-
-    function renderSequenceGame() {
-      const tray = document.getElementById('cards-tray');
-      tray.innerHTML = '';
-
-      const shuffled = [...sequencePuzzleData].sort(() => Math.random() - 0.5);
-
-      shuffled.forEach(item => {
-        const card = document.createElement('div');
-        card.id = `seq-card-${item.id}`;
-        card.dataset.id = item.id;
-        card.draggable = true;
-        card.className = "seq-card bg-white p-2 sm:p-3 rounded-xl sm:rounded-2xl border-2 sm:border-4 border-emerald-300 shadow-md cursor-grab active:cursor-grabbing flex flex-col items-center justify-center transition-all hover:scale-105 active:scale-95 min-h-[90px]";
-        card.innerHTML = `
-          <div class="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center">${item.svg}</div>
-          <span class="font-extrabold text-xs sm:text-base text-emerald-950 mt-0.5 sm:mt-1 text-center truncate w-full">${item.title}</span>
-          <span class="text-[10px] sm:text-xs text-slate-500 text-center line-clamp-1">${item.desc}</span>
-          <span class="mt-1 text-[10px] sm:text-xs bg-emerald-100 text-emerald-800 font-bold px-1.5 sm:px-2 py-0.5 rounded-full">🔊 Escuchar</span>
-        `;
-
-        card.addEventListener('dragstart', (e) => {
-          e.dataTransfer.setData('cardId', item.id);
-          card.classList.add('dragging');
-          speakText(item.spokenText);
-        });
-        card.addEventListener('dragend', () => card.classList.remove('dragging'));
-
-        card.addEventListener('click', () => {
-          sound.playPlop();
-          // Narrar qué tarjeta es con voz infantil entusiasta
-          speakText(item.spokenText);
-
-          // Colocar en el primer casillero disponible
-          for (let i = 1; i <= 4; i++) {
-            if (!userSequenceSlots[i]) {
-              setTimeout(() => {
-                placeCardInSlot(item.id, i);
-              }, 400);
-              break;
-            }
-          }
-        });
-
-        tray.appendChild(card);
-      });
-
-      document.querySelectorAll('.sequence-slot').forEach(slot => {
-        const slotNum = parseInt(slot.dataset.slot);
-
-        // Estilos para indicar que es clickeable
-        slot.classList.add('cursor-pointer', 'hover:shadow-md');
-
-        slot.addEventListener('dragover', (e) => {
-          e.preventDefault();
-          slot.classList.add('scale-105', 'bg-emerald-100');
-        });
-
-        slot.addEventListener('dragleave', () => {
-          slot.classList.remove('scale-105', 'bg-emerald-100');
-        });
-
-        slot.addEventListener('drop', (e) => {
-          e.preventDefault();
-          slot.classList.remove('scale-105', 'bg-emerald-100');
-          const cardId = parseInt(e.dataTransfer.getData('cardId'));
-          if (cardId) {
-            placeCardInSlot(cardId, slotNum);
-          }
-        });
-
-        slot.addEventListener('click', (e) => {
-          // Si tocan el botón de quitar específicamente
-          if (e.target.closest('.btn-remove-card')) {
-            e.stopPropagation();
-            returnCardToTray(slotNum);
-            speakText("Quitaste la tarjeta. ¡Puedes elegir otra!");
-            return;
-          }
-
-          sound.playPlop();
-          // Si la casilla está vacía, narra la pregunta del casillero
-          if (!userSequenceSlots[slotNum]) {
-            speakText(slotAudioPrompts[slotNum]);
-          } else {
-            // Si ya tiene una tarjeta, narra qué tarjeta está colocada allí
-            const cardData = sequencePuzzleData.find(d => d.id === userSequenceSlots[slotNum]);
-            speakText(`En el número ${slotNum} pusiste: ${cardData.spokenText}`);
-          }
-        });
-      });
-    }
-
-    function placeCardInSlot(cardId, slotNum) {
-      for (let s in userSequenceSlots) {
-        if (userSequenceSlots[s] === cardId) {
-          userSequenceSlots[s] = null;
-          clearSlotView(s);
-        }
-      }
-
-      if (userSequenceSlots[slotNum]) {
-        returnCardToTray(slotNum);
-      }
-
-      userSequenceSlots[slotNum] = cardId;
-      const cardEl = document.getElementById(`seq-card-${cardId}`);
-      if (cardEl) cardEl.classList.add('hidden');
-
-      const data = sequencePuzzleData.find(d => d.id === cardId);
-      const slotEl = document.querySelector(`.sequence-slot[data-slot="${slotNum}"]`);
-      
-      slotEl.innerHTML = `
-        <span class="absolute top-1 sm:top-2 left-2 sm:left-3 text-lg sm:text-2xl font-black text-emerald-600">${slotNum}º</span>
-        <button class="btn-remove-card absolute top-1 sm:top-2 right-1 sm:right-2 text-rose-600 font-extrabold text-[10px] sm:text-xs bg-rose-100 hover:bg-rose-200 border border-rose-300 px-1.5 sm:px-2 py-0.5 rounded-full z-10 transition">✕ Quitar</button>
-        <div class="flex flex-col items-center justify-center p-1 sm:p-2 text-center anim-pop pointer-events-none">
-          <div class="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center">${data.svg}</div>
-          <span class="font-extrabold text-xs sm:text-sm text-emerald-900 mt-0.5 sm:mt-1 truncate w-full">${data.title}</span>
-          <span class="text-[10px] sm:text-xs text-slate-500 line-clamp-1">${data.desc}</span>
-        </div>
-      `;
-      sound.playPlop();
-    }
-
-    function returnCardToTray(slotNum) {
-      const cardId = userSequenceSlots[slotNum];
-      if (!cardId) return;
-
-      userSequenceSlots[slotNum] = null;
-      const cardEl = document.getElementById(`seq-card-${cardId}`);
-      if (cardEl) cardEl.classList.remove('hidden');
-
-      clearSlotView(slotNum);
-      sound.playPlop();
-    }
-
-    function clearSlotView(slotNum) {
-      const slotEl = document.querySelector(`.sequence-slot[data-slot="${slotNum}"]`);
-      const colors = { 1: 'amber', 2: 'sky', 3: 'emerald', 4: 'pink' };
-      const prompts = {
-        1: "¿Qué va primero?",
-        2: "¿Qué pasa después?",
-        3: "¿Cómo sigue creciendo?",
-        4: "¿Al final qué nace?"
-      };
-      const c = colors[slotNum] || 'emerald';
-      slotEl.innerHTML = `
-        <span class="absolute top-1 sm:top-2 left-2 sm:left-3 text-lg sm:text-2xl font-black text-${c}-500">${slotNum}º</span>
-        <div class="slot-content flex flex-col items-center justify-center h-full w-full pointer-events-none text-center px-1">
-          <span class="text-${c}-600 text-xs sm:text-sm font-bold text-center px-1">${prompts[slotNum]}</span>
-          <span class="text-[10px] sm:text-xs text-emerald-700 bg-emerald-100/90 font-bold px-1.5 sm:px-2 py-0.5 rounded-full mt-1 sm:mt-2">🔊 Escuchar</span>
-        </div>
-      `;
-    }
-
-    document.getElementById('btn-check-sequence').addEventListener('click', () => {
-      const filled = [1, 2, 3, 4].every(num => userSequenceSlots[num] !== null);
-      if (!filled) {
-        sound.playError();
-        speakText("Aún te faltan tarjetas. ¡Coloca una en cada número!");
-        return;
-      }
-
-      const isCorrect = userSequenceSlots[1] === 1 &&
-                        userSequenceSlots[2] === 2 &&
-                        userSequenceSlots[3] === 3 &&
-                        userSequenceSlots[4] === 4;
-
-      if (isCorrect) {
-        sound.playFanfare();
-        triggerCycleCelebration();
-      } else {
-        sound.playError();
-        speakText("¡Casi lo logras! Recuerda: primero la semillita, luego el brote, después las hojas y al final la flor.");
-      }
-    });
-
-    function triggerCycleCelebration() {
-      cycleCompletedModal.classList.remove('hidden');
-
-      // Lluvia de confeti alegre
-      confettiParticles = [];
-      const colors = ['#F59E0B', '#10B981', '#EC4899', '#3B82F6', '#8B5CF6', '#EF4444'];
-      for (let i = 0; i < 90; i++) {
-        confettiParticles.push({
-          x: canvas.width / 2,
-          y: canvas.height / 2,
-          vx: (Math.random() - 0.5) * 14,
-          vy: (Math.random() - 0.7) * 16,
-          size: Math.random() * 8 + 6,
-          color: colors[Math.floor(Math.random() * colors.length)],
-          rotation: Math.random() * 360,
-          rotSpeed: (Math.random() - 0.5) * 10
-        });
-      }
-      if (!confettiAnimId) runConfetti();
-
-      speakText("¡Extraordinario! Mira cómo gira el ciclo de la planta: la semillita despierta, sale el brote, crece la planta y abre una hermosa flor con tu carita para volver a dar semillitas.");
-    }
-
-    document.getElementById('btn-close-cycle-modal').addEventListener('click', () => {
-      cycleCompletedModal.classList.add('hidden');
-      sound.playPlop();
-      userSequenceSlots = { 1: null, 2: null, 3: null, 4: null };
-      [1, 2, 3, 4].forEach(s => clearSlotView(s));
-      renderSequenceGame();
-    });
-
-    document.getElementById('btn-goto-grow').addEventListener('click', () => {
-      cycleCompletedModal.classList.add('hidden');
-      sound.playPlop();
-      tabGrow.click();
-    });
-
-    document.getElementById('btn-reset-sequence').addEventListener('click', () => {
-      userSequenceSlots = { 1: null, 2: null, 3: null, 4: null };
-      [1, 2, 3, 4].forEach(s => clearSlotView(s));
-      renderSequenceGame();
-      sound.playPlop();
-    });
-
-    const canvas = document.getElementById('confetti-canvas');
-    const ctx = canvas.getContext('2d');
-    let confettiParticles = [];
-    let confettiAnimId = null;
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    function triggerCelebration(message) {
-      document.getElementById('celebration-msg').textContent = message;
-      document.getElementById('celebration-modal').classList.remove('hidden');
-
-      confettiParticles = [];
-      const colors = ['#F59E0B', '#10B981', '#EC4899', '#3B82F6', '#8B5CF6', '#EF4444'];
-      for (let i = 0; i < 90; i++) {
-        confettiParticles.push({
-          x: canvas.width / 2,
-          y: canvas.height / 2,
-          vx: (Math.random() - 0.5) * 14,
-          vy: (Math.random() - 0.7) * 16,
-          size: Math.random() * 8 + 6,
-          color: colors[Math.floor(Math.random() * colors.length)],
-          rotation: Math.random() * 360,
-          rotSpeed: (Math.random() - 0.5) * 10
-        });
-      }
-
-      if (!confettiAnimId) {
-        runConfetti();
-      }
-    }
-
-    function runConfetti() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      confettiParticles.forEach(p => {
-        p.x += p.vx;
-        p.y += p.vy;
-        p.vy += 0.3;
-        p.rotation += p.rotSpeed;
-
-        ctx.save();
-        ctx.translate(p.x, p.y);
-        ctx.rotate((p.rotation * Math.PI) / 180);
-        ctx.fillStyle = p.color;
-        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
-        ctx.restore();
-      });
-
-      confettiParticles = confettiParticles.filter(p => p.y < canvas.height + 50);
-
-      if (confettiParticles.length > 0) {
-        confettiAnimId = requestAnimationFrame(runConfetti);
-      } else {
-        confettiAnimId = null;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-      }
-    }
-
-    const btnCloseModal = document.getElementById('btn-close-modal');
-    if (btnCloseModal) {
-      btnCloseModal.addEventListener('click', () => {
-        const modal = document.getElementById('celebration-modal');
-        if (modal) modal.classList.add('hidden');
-        sound.playPlop();
-      });
-    }
-
     const tabGrow = document.getElementById('tab-grow');
     const tabSequence = document.getElementById('tab-sequence');
     const modeGrowContainer = document.getElementById('mode-grow-container');
@@ -1716,18 +2138,20 @@
 
     tabGrow.addEventListener('click', () => {
       sound.playPlop();
-      tabGrow.className = "flex-1 max-w-[240px] sm:max-w-none bg-emerald-500 text-white font-bold text-sm xs:text-base sm:text-xl px-3 sm:px-5 py-2 sm:py-2.5 rounded-2xl shadow-lg border-b-4 border-emerald-700 flex items-center justify-center gap-1.5 sm:gap-2 transition active:scale-95";
-      tabSequence.className = "flex-1 max-w-[240px] sm:max-w-none bg-white/80 hover:bg-white text-emerald-800 font-bold text-sm xs:text-base sm:text-xl px-3 sm:px-5 py-2 sm:py-2.5 rounded-2xl shadow-md border-b-4 border-slate-300 flex items-center justify-center gap-1.5 sm:gap-2 transition active:scale-95";
+      tabGrow.className = "flex-1 bg-emerald-500 text-white font-black text-xs sm:text-base px-3 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl shadow-sm border-b-2 sm:border-b-4 border-emerald-700 flex items-center justify-center gap-1.5 transition active:scale-95";
+      tabSequence.className = "flex-1 bg-white/80 hover:bg-white text-emerald-900 font-black text-xs sm:text-base px-3 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl shadow-xs border-b-2 sm:border-b-4 border-slate-300 flex items-center justify-center gap-1.5 transition active:scale-95";
       modeGrowContainer.classList.remove('hidden');
       modeSequenceContainer.classList.add('hidden');
       modeSequenceContainer.classList.remove('flex');
-      instructionText.textContent = stagesConfig[plantGrowthStage].instruction;
+      
+      const currentStage = currentCategory === 'plant' ? plantGrowthStage : butterflyGrowthStage;
+      instructionText.textContent = categoriesConfig[currentCategory].stages[currentStage].instruction;
     });
 
     tabSequence.addEventListener('click', () => {
       sound.playPlop();
-      tabSequence.className = "flex-1 max-w-[240px] sm:max-w-none bg-emerald-500 text-white font-bold text-sm xs:text-base sm:text-xl px-3 sm:px-5 py-2 sm:py-2.5 rounded-2xl shadow-lg border-b-4 border-emerald-700 flex items-center justify-center gap-1.5 sm:gap-2 transition active:scale-95";
-      tabGrow.className = "flex-1 max-w-[240px] sm:max-w-none bg-white/80 hover:bg-white text-emerald-800 font-bold text-sm xs:text-base sm:text-xl px-3 sm:px-5 py-2 sm:py-2.5 rounded-2xl shadow-md border-b-4 border-slate-300 flex items-center justify-center gap-1.5 sm:gap-2 transition active:scale-95";
+      tabSequence.className = "flex-1 bg-emerald-500 text-white font-black text-xs sm:text-base px-3 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl shadow-sm border-b-2 sm:border-b-4 border-emerald-700 flex items-center justify-center gap-1.5 transition active:scale-95";
+      tabGrow.className = "flex-1 bg-white/80 hover:bg-white text-emerald-900 font-black text-xs sm:text-base px-3 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl shadow-xs border-b-2 sm:border-b-4 border-slate-300 flex items-center justify-center gap-1.5 transition active:scale-95";
       modeGrowContainer.classList.add('hidden');
       modeSequenceContainer.classList.remove('hidden');
       modeSequenceContainer.classList.add('flex');
@@ -1736,17 +2160,24 @@
       renderSequenceGame();
     });
 
+    document.getElementById('instruction-banner').addEventListener('click', (e) => {
+      if (e.target.closest('#btn-speak-instruction')) return;
+      document.getElementById('btn-speak-instruction').click();
+    });
+
     document.getElementById('btn-reset-plant').addEventListener('click', () => {
       sound.playPlop();
-      updatePlantStage(0);
+      updateStageView(0);
+      speakText(categoriesConfig[currentCategory].stages[0].speech);
     });
 
     document.getElementById('btn-speak-instruction').addEventListener('click', () => {
       sound.init();
+      const currentStage = currentCategory === 'plant' ? plantGrowthStage : butterflyGrowthStage;
       if (!modeGrowContainer.classList.contains('hidden')) {
-        speakText(stagesConfig[plantGrowthStage].speech);
+        speakText(categoriesConfig[currentCategory].stages[currentStage].speech);
       } else {
-        speakText("Ordena las tarjetas: primero la semillita, luego el brote, después las hojas y al final la flor.");
+        speakText("Ordena las tarjetas tocando los números del uno al cuatro.");
       }
     });
 
@@ -1757,30 +2188,21 @@
 
     document.getElementById('btn-sun-fun').addEventListener('click', () => {
       sound.playSparkle();
-      speakText("¡Hola, pequeñito! ¡Soy el sol y le doy calorcito a las plantas!");
+      speakText("¡Hola, pequeñito! ¡Soy el sol y le doy calorcito a todo el jardín!");
     });
 
-    // Registro del Service Worker
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('./service-worker.js', { scope: './' })
-          .then(reg => {
-            console.log('Service Worker registrado correctamente con alcance:', reg.scope);
-          })
-          .catch(err => {
-            console.warn('Registro de Service Worker falló:', err);
-          });
+          .then(reg => console.log('Service Worker registrado correctamente'))
+          .catch(err => console.warn('Registro de Service Worker falló:', err));
       });
     }
 
-    // Instalación PWA en segundo plano (sin botones visuales en la interfaz)
     let deferredPrompt = null;
-
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
-      
-      // Ofrecer la ventana oficial nativa de instalación al primer toque del usuario
       const promptInstallSilently = () => {
         if (deferredPrompt) {
           deferredPrompt.prompt();
@@ -1789,16 +2211,10 @@
         window.removeEventListener('click', promptInstallSilently);
         window.removeEventListener('touchstart', promptInstallSilently);
       };
-
       window.addEventListener('click', promptInstallSilently, { once: true });
       window.addEventListener('touchstart', promptInstallSilently, { once: true });
     });
 
-    window.addEventListener('appinstalled', () => {
-      console.log('PWA instalada satisfactoriamente.');
-    });
-
-    /* CONTROL DE PANTALLA DE CARGA / SPLASH SCREEN */
     function initSplashScreen() {
       const splash = document.getElementById('splash-screen');
       const bar = document.getElementById('splash-progress-bar');
@@ -1806,23 +2222,20 @@
 
       if (!splash) return;
 
-      // Animar la barra de carga progresivamente
       setTimeout(() => { if (bar) bar.style.width = '35%'; }, 300);
       setTimeout(() => { 
         if (bar) bar.style.width = '75%'; 
-        if (status) status.textContent = 'Despertando las plantitas... 🌻';
+        if (status) status.textContent = 'Despertando las mariposas y plantitas... 🦋';
       }, 1200);
       setTimeout(() => { 
         if (bar) bar.style.width = '100%'; 
         if (status) status.textContent = '¡Todo listo para jugar! ✨';
       }, 2100);
 
-      // Desvanecer y retirar el splash screen a los 2.7 segundos
       setTimeout(() => {
         splash.classList.add('opacity-0', 'pointer-events-none');
         setTimeout(() => {
           splash.remove();
-          // Cargar voces en caliente al salir del splash
           loadLatinVoice();
         }, 750);
       }, 2700);
@@ -1831,8 +2244,9 @@
     window.addEventListener('DOMContentLoaded', () => {
       initSplashScreen();
       loadLatinVoice();
-      updatePlantStage(0);
+      renderToolsShelf();
       renderSequenceGame();
+      updateStageView(0);
     });
   </script>
 </body>
